@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> ChatMessage.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,33 +79,60 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>ChatMessage.js</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+//import firebase from 'firebase/app';
+//import 'firebase/auth';
+import { withRouter } from "react-router-dom";
 
+/**
+ * This is the ChatMessage Component
+ */
+class ChatMessage extends React.Component {
+  constructor(props) {
+    super(props);
 
-    <h3> </h3>
+    this.state = {
+      message: props.message,
+      messageUsername: props.message.username,
+      username: props.username,
+    };
+  }
 
+  render() {
+    const message = this.state.message;
+    const messageClass =
+      this.state.messageUsername === this.state.username ? "sent" : "received";
+    console.log(
+      "chat messages: " +
+        this.state.message.message +
+        " " +
+        this.state.messageUsername
+    );
+    console.log("messageClass " + messageClass);
+    return (
+      &lt;>
+        &lt;div className={`message ${messageClass}`}>
+          &lt;p>{message.message}&lt;/p>
+        &lt;/div>
+      &lt;/>
+    );
+  }
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default withRouter(ChatMessage);
+</code></pre>
+        </article>
+    </section>
 
 
 

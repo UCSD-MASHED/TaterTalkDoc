@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> User.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,33 +79,61 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>User.js</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { withRouter } from "react-router-dom";
 
+/**
+ * This is the User Component
+ */
+class User extends React.Component {
+  constructor(props) {
+    super(props);
+    this.startPrivateChat = this.startPrivateChat.bind(this);
+  }
 
-    <h3> </h3>
+  startPrivateChat() {
+    // TODO: create a room
+    console.log(this.props.user);
+  }
 
+  render() {
+    return (
+      &lt;>
+        &lt;div className="user" onClick={this.startPrivateChat}>
+          &lt;a
+            href="# "
+            className="list-group-item list-group-item-action list-group-item-secondary justify-content-between d-flex"
+          >
+            &lt;h5 className="mb-1">{this.props.user.displayName}&lt;/h5>
+            &lt;small className="text-muted">
+              @{this.props.user.username}
+              {/* &lt;br/>
+            &lt;br/>
+            {this.props.user.online ? "online" : "offline"} */}
+            &lt;/small>
+            {/* &lt;br/>
+            &lt;small>{this.props.user.online ? "online" : "offline"}&lt;/small> */}
+          &lt;/a>
+        &lt;/div>
+      &lt;/>
+    );
+  }
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default withRouter(User);
+</code></pre>
+        </article>
+    </section>
 
 
 

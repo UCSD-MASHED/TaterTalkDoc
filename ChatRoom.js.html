@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ChatRoom.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">TaterTalk Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="User.html">User</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>ChatRoom.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { createRef } from "react";
+import firebase from "firebase/app";
+import { withRouter } from "react-router-dom";
+import ChatMessage from "./ChatMessage";
+import User from "./User";
+import "../App.css";
+
+/**
+ * This is the ChatRoom Component
+ */
+class ChatRoom extends React.Component {
+  constructor(props) {
+    super(props);
+
+    let user = null;
+    if (props.location &amp;&amp; props.location.state &amp;&amp; props.location.state.user) {
+      user = props.location.state.user;
+    }
+
+    this.state = {
+      message: "",
+      roomName: "test_room",
+      messages: [],
+      user: user,
+      users: [],
+      keyword: "",
+    };
+    this.dummy = createRef();
+    this.initMessages = false;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+  }
+
+  componentDidMount() {
+    if (!this.state.user) {
+      this.props.history.replace("/");
+    } else {
+      if (!this.initMessages) {
+        this.getInitMessages().then(() => {
+          this.scrollToBottom();
+        });
+        this.initMessages = true;
+      }
+      this.getMessages().then(() => {
+        this.scrollToBottom();
+      });
+      this.getUsers(this.state.user.username).then((users) => {
+        this.setState({ users: users });
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    // this.dbListener();
+  }
+
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({ message: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    if (this.checkUserInRoom()) {
+      this.sendMessage();
+      this.scrollToBottom();
+    }
+  }
+
+  handleSearchChange(event) {
+    event.preventDefault();
+    this.setState({ keyword: event.target.value }, () => {
+      this.searchPrefix(this.state.keyword, this.state.user.username).then(
+        (users) => {
+          this.setState({ users: users });
+        }
+      );
+    });
+  }
+
+  /**
+   * Get all the users excluding the current user
+   * @param {string} userName - The username of the current user
+   * @return {user[]} An array of user objects
+   */
+  async getUsers(userName) {
+    var res = await firebase
+      .firestore()
+      .collection("users")
+      .where("username", "!=", userName)
+      .get()
+      .then((docs) => {
+        let users = [];
+        docs.forEach((doc) => {
+          users.push(doc.data());
+        });
+        return users;
+      });
+    return res;
+  }
+
+  async searchPrefix(keyword, userName) {
+    var res = await firebase
+      .firestore()
+      .collection("users")
+      .where("username", "!=", userName)
+      .where("username", ">=", keyword)
+      .where("username", "&lt;=", keyword + "\uf8ff")
+      .get()
+      .then((docs) => {
+        let users = [];
+        docs.forEach((doc) => {
+          users.push(doc.data());
+        });
+        return users;
+      });
+    return res;
+  }
+
+  /**
+   * Query by roomName and userName to check if the
+   * user is in this chatroom.
+   */
+  async checkUserInRoom() {
+    let username = this.state.user.username;
+    let roomName = this.state.roomName;
+
+    var res = await firebase
+      .firestore()
+      .collection("rooms")
+      .where("roomName", "==", roomName)
+      .where("participants", "array-contains", username)
+      .get()
+      .then((qs) => {
+        return !qs.empty;
+      });
+    return res;
+  }
+
+  /**
+   * Update user timestamp and append message to room of messages.
+   */
+  async sendMessage() {
+    let message = this.state.message;
+    let username = this.state.user.username;
+    let roomName = this.state.roomName;
+    let timestamp = firebase.firestore.FieldValue.serverTimestamp();
+    let newMessage = {
+      message: message,
+      timestamp: timestamp,
+      username: username,
+    };
+    await firebase
+      .firestore()
+      .collection("rooms")
+      .doc(roomName)
+      .set({ username: timestamp });
+
+    await firebase
+      .firestore()
+      .collection("rooms")
+      .doc(roomName)
+      .collection("messages")
+      .add(newMessage);
+
+    this.setState({ message: "" }); // set message bar text back to placeholder (empty)
+  }
+
+  /**
+   * Get messages based off of roomName
+   */
+  async getInitMessages() {
+    console.log("inside get init messages");
+    // console.log(this.state.user.username);
+    let roomName = this.state.roomName;
+    let msgs = [];
+    await firebase
+      .firestore()
+      .collection("rooms")
+      .doc(roomName)
+      .collection("messages")
+      .orderBy("timestamp", "desc")
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach(function (doc) {
+          msgs.push(doc.data());
+        });
+      });
+    // console.log(msgs);
+    this.setState({ messages: msgs });
+  }
+
+  /**
+   * Listener to messages list. Periodically update messages.
+   */
+  async getMessages() {
+    let roomName = this.state.roomName;
+    this.dbListener = firebase
+      .firestore()
+      .collection("rooms")
+      .doc(roomName)
+      .collection("messages")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        this.state.messages = [];
+        snapshot.forEach((doc) => {
+          this.state.messages.push(doc.data());
+          this.scrollToBottom();
+        });
+      });
+  }
+
+  scrollToBottom() {
+    if (this.dummy.current) {
+      this.dummy.current.scrollIntoView();
+    }
+  }
+
+  render() {
+    console.log(this.state.users);
+    return (
+      &lt;div className="main">
+        &lt;div className="user-list-wrapper">
+          &lt;h3>People&lt;/h3>
+          &lt;input
+            className="form-control"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            value={this.state.keyword}
+            onChange={this.handleSearchChange}
+          />
+          &lt;div className="list-group">
+            {this.state.users &amp;&amp;
+              this.state.users.map((user, i) => &lt;User key={i} user={user} />)}
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="chat-wrapper">
+          &lt;h3>Chat Room&lt;/h3>
+          &lt;div className="chat-messages">
+            {this.state.messages &amp;&amp;
+              this.state.messages
+                .reverse()
+                .map((msg, i) => (
+                  &lt;ChatMessage
+                    key={i}
+                    message={msg}
+                    username={this.state.user.username}
+                  />
+                ))}
+            &lt;span ref={this.dummy}>&lt;/span>
+          &lt;/div>
+          &lt;div className="chat-input">
+            &lt;form onSubmit={this.handleSubmit}>
+              {/* {this.state.showEmoji ? (
+                  &lt;EmojiPicker onClickOutside={() => this.toggleEmojiPicker()} title={'Pick your emoji'} emoji={'point_up'} data={data} style={{ position: "absolute", bottom: "100px", right: "0" }} set="apple" onSelect={this.addEmoji} />
+              ) : null} */}
+
+              &lt;div className="input-group chat-box">
+                &lt;input
+                  className="form-control"
+                  type="text"
+                  value={this.state.message}
+                  onChange={this.handleChange}
+                  placeholder="Potatoes can't talk... but you can!"
+                />
+                {/* &lt;div className="input-group-append">
+                      &lt;button type="button" className="btn" onClick={() => this.toggleEmojiPicker()} id="show-emoji-yes">{'😃'}&lt;/button>
+                  &lt;/div> */}
+              &lt;/div>
+
+              &lt;button
+                disabled={!this.state.message}
+                type="submit"
+                className="btn btn-primary btn-block"
+              >
+                Send
+              &lt;/button>
+            &lt;/form>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+
+export default withRouter(ChatRoom);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>
