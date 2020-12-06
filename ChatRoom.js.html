@@ -406,84 +406,84 @@ class ChatRoom extends React.Component {
     return this.state.loading ? (
       &lt;Loading />
     ) : (
-      &lt;div className="main">
-        &lt;div className="user-list-wrapper">
-          &lt;h3>People&lt;/h3>
-          &lt;input
-            className="form-control"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            value={this.state.keyword}
-            onChange={this.handleSearchChange}
-            style={{ marginBottom: "1rem" }}
-          />
-          &lt;div className="list-group">
-            {this.state.users &amp;&amp;
-              this.state.users.map((user, i) => (
-                &lt;User
-                  key={i}
-                  user={user}
-                  myUser={this.state.user}
-                  handler={this.handleChangeRoom}
-                />
-              ))}
-          &lt;/div>
-        &lt;/div>
-        &lt;div className="chat-wrapper">
-          &lt;button
-            type="button"
-            style={{ float: "right" }}
-            className="btn btn-warning btn-sm"
-            onClick={() => this.logout()}
-          >
-            Log out
-          &lt;/button>
-          &lt;h3 data-testid="room-name">{this.state.roomName}&lt;/h3>
-          &lt;div className="chat-messages">
-            {this.state.messages &amp;&amp;
-              this.state.messages
-                .reverse()
-                .map((msg, i) => (
-                  &lt;ChatMessage
+        &lt;div className="main">
+          &lt;div className="user-list-wrapper">
+            &lt;h3>People&lt;/h3>
+            &lt;input
+              className="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              value={this.state.keyword}
+              onChange={this.handleSearchChange}
+              style={{ marginBottom: "1rem" }}
+            />
+            &lt;div className="list-group">
+              {this.state.users &amp;&amp;
+                this.state.users.map((user, i) => (
+                  &lt;User
                     key={i}
-                    message={msg}
-                    username={this.state.user.username}
+                    user={user}
+                    myUser={this.state.user}
+                    handler={this.handleChangeRoom}
                   />
                 ))}
-            &lt;span ref={this.dummy}>&lt;/span>
+            &lt;/div>
           &lt;/div>
-          &lt;div className="chat-input">
-            &lt;form onSubmit={this.handleSubmit}>
-              {/* {this.state.showEmoji ? (
+          &lt;div className="btn-wrapper">
+            &lt;button
+              type="button"
+              style={{ float: "right" }}
+              className="btn btn-warning btn-sm"
+              onClick={() => this.logout()}
+            >
+              Log out
+          &lt;/button>
+            &lt;h3 data-testid="room-name">{this.state.roomName}&lt;/h3>
+            &lt;div className="chat-messages">
+              {this.state.messages &amp;&amp;
+                this.state.messages
+                  .reverse()
+                  .map((msg, i) => (
+                    &lt;ChatMessage
+                      key={i}
+                      message={msg}
+                      username={this.state.user.username}
+                    />
+                  ))}
+              &lt;span ref={this.dummy}>&lt;/span>
+            &lt;/div>
+            &lt;div className="chat-input">
+              &lt;form onSubmit={this.handleSubmit}>
+                {/* {this.state.showEmoji ? (
                   &lt;EmojiPicker onClickOutside={() => this.toggleEmojiPicker()} title={'Pick your emoji'} emoji={'point_up'} data={data} style={{ position: "absolute", bottom: "100px", right: "0" }} set="apple" onSelect={this.addEmoji} />
               ) : null} */}
 
-              &lt;div className="input-group chat-box">
-                &lt;input
-                  className="form-control"
-                  type="text"
-                  value={this.state.message}
-                  onChange={this.handleChange}
-                  placeholder="Potatoes can't talk... but you can!"
-                />
-                {/* &lt;div className="input-group-append">
+                &lt;div className="input-group chat-box">
+                  &lt;input
+                    className="form-control"
+                    type="text"
+                    value={this.state.message}
+                    onChange={this.handleChange}
+                    placeholder="Potatoes can't talk... but you can!"
+                  />
+                  {/* &lt;div className="input-group-append">
                       &lt;button type="button" className="btn" onClick={() => this.toggleEmojiPicker()} id="show-emoji-yes">{'😃'}&lt;/button>
                   &lt;/div> */}
-              &lt;/div>
+                &lt;/div>
 
-              &lt;button
-                disabled={!this.state.message}
-                type="submit"
-                className="btn btn-primary btn-block mt-2"
-              >
-                Send
+                &lt;button
+                  disabled={!this.state.message}
+                  type="submit"
+                  className="btn btn-primary btn-block mt-2"
+                >
+                  Send
               &lt;/button>
-            &lt;/form>
+              &lt;/form>
+            &lt;/div>
           &lt;/div>
         &lt;/div>
-      &lt;/div>
-    );
+      );
   }
 }
 
