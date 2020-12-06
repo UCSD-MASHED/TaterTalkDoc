@@ -197,31 +197,16 @@ class Login extends React.Component {
       &lt;Loading />
     ) : (
       &lt;div className="auth-wrapper">
-        &lt;div className="btn-wrapper">
+        &lt;div className="auth-inner">
           &lt;form>
+            &lt;h3>Sign In With Google&lt;/h3>
             &lt;button
-              style={{ float: "right" }}
               onClick={this.handleGoogleSignIn}
-              className="btn btn-primary btn-sm"
+              className="btn btn-primary btn-block"
             >
               Sign In
             &lt;/button>
           &lt;/form>
-
-          &lt;span className="landing-left-wrapper">
-            &lt;div className="landing-text">
-              &lt;h1>TaterTalk&lt;/h1>
-              &lt;br>&lt;/br>
-              &lt;p>Presented by Team Mashed&lt;/p>
-            &lt;/div>
-          &lt;/span>
-          &lt;span className="landing-right-wrapper">
-            &lt;img
-              className="landing-img"
-              alt="illustration"
-              src={process.env.PUBLIC_URL + "/landing_illustration.png"}
-            />
-          &lt;/span>
         &lt;/div>
         &lt;ToastContainer />
       &lt;/div>
