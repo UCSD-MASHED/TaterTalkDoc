@@ -96,6 +96,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Loading from "./Loading";
 import Jokes from "./Jokes";
 
+
 /**
  * This is the Login Component
  */
@@ -203,7 +204,6 @@ class Login extends React.Component {
   }
 
   incrementImgState() {
-    console.log(this.state);
     this.setState({
       imgState: this.state.imgState &lt; 4 ? this.state.imgState + 1 : 0,
     });
@@ -215,37 +215,37 @@ class Login extends React.Component {
     return this.state.loading ? (
       &lt;Loading />
     ) : (
-      &lt;div className="auth-wrapper">
-        &lt;div className="signin-wrapper">
-          &lt;span className="landing-left-wrapper">
-            &lt;div className="landing-text">
-              &lt;h1>TaterTalk&lt;/h1>
-              &lt;br>&lt;/br>
-              &lt;p>Presented by Team Mashed&lt;/p>
-              &lt;br>&lt;/br>
-              &lt;form>
-                &lt;button
-                  style={{ width: "20vw", height: "8vh", fontSize: "3vh" }}
-                  onClick={this.handleGoogleSignIn}
-                  className="btn btn-primary btn-sm"
-                >
-                  Sign In
+        &lt;div className="auth-wrapper">
+          &lt;div className="signin-wrapper">
+            &lt;span className="landing-left-wrapper">
+              &lt;div className="landing-text">
+                &lt;h1>TaterTalk&lt;/h1>
+                &lt;br>&lt;/br>
+                &lt;p>Presented by Team Mashed&lt;/p>
+                &lt;br>&lt;/br>
+                &lt;form>
+                  &lt;button
+                    style={{ width: "20vw", height: "8vh", fontSize: "3vh" }}
+                    onClick={this.handleGoogleSignIn}
+                    className="btn btn-primary btn-sm"
+                  >
+                    Sign In
                 &lt;/button>
-              &lt;/form>
-            &lt;/div>
-          &lt;/span>
-          &lt;span className="landing-right-wrapper">
-            &lt;img
-              className="landing-img"
-              alt="illustration"
-              src={process.env.PUBLIC_URL + "/landing_illustration.png"}
-            />
-          &lt;/span>
-          &lt;Jokes imgState={imgState} />
+                &lt;/form>
+              &lt;/div>
+            &lt;/span>
+            &lt;span className="landing-right-wrapper">
+              &lt;img
+                className="landing-img"
+                alt="illustration"
+                src={process.env.PUBLIC_URL + "/landing_illustration.png"}
+              />
+            &lt;/span>
+            &lt;Jokes imgState={imgState} />
+          &lt;/div>
+          &lt;ToastContainer />
         &lt;/div>
-        &lt;ToastContainer />
-      &lt;/div>
-    );
+      );
   }
 }
 
