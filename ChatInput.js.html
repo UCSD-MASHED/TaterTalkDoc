@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ChatMessage</title>
+  <title> ChatInput.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,156 +79,60 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>ChatMessage</h1>
+                    <p>Source</p>
+                    <h1>ChatInput.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>ChatMessage<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>This is the ChatMessage Component</p></div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="ChatMessage">
-        <a class="href-link" href="#ChatMessage">#</a>
-        
-        <span class="code-name">
-            
-                new ChatMessage<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="ChatMessage.js.html" class="button">View Source</a>
-            <span>
-                <a href="ChatMessage.js.html">ChatMessage.js</a>, <a href="ChatMessage.js.html#line7">line 7</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+
+/**
+ * This is the ChatInput Component for the ChatRoom
+ */
+class ChatInput extends React.Component {
+  render() {
+    return (
+      &lt;div className="chat-input">
+        &lt;form onSubmit={this.props.handleSubmit}>
+          {/* {this.state.showEmoji ? (
+                  &lt;EmojiPicker onClickOutside={() => this.toggleEmojiPicker()} title={'Pick your emoji'} emoji={'point_up'} data={data} style={{ position: "absolute", bottom: "100px", right: "0" }} set="apple" onSelect={this.addEmoji} />
+              ) : null} */}
+
+          &lt;div className="input-group chat-box">
+            &lt;input
+              className="form-control"
+              type="text"
+              value={this.props.message}
+              onChange={this.props.handleChange}
+              placeholder="Potatoes can't talk... but you can!"
+            />
+            {/* &lt;div className="input-group-append">
+                      &lt;button type="button" className="btn" onClick={() => this.toggleEmojiPicker()} id="show-emoji-yes">{'😃'}&lt;/button>
+                  &lt;/div> */}
+          &lt;/div>
+
+          &lt;button
+            disabled={!this.props.message}
+            type="submit"
+            className="btn btn-primary btn-block mt-2"
+          >
+            Send
+          &lt;/button>
+        &lt;/form>
+      &lt;/div>
+    );
+  }
+}
+
+export default ChatInput;
+</code></pre>
+        </article>
+    </section>
 
 
 

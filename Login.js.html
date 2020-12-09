@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="User.html">User</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul></div>
                 
             </nav>
         </div>
@@ -209,8 +209,6 @@ class Login extends React.Component {
   }
 
   render() {
-    const { imgState } = this.state;
-
     return this.state.loading ? (
       &lt;Loading />
     ) : (
@@ -222,15 +220,13 @@ class Login extends React.Component {
               &lt;br>&lt;/br>
               &lt;p>Presented by Team Mashed&lt;/p>
               &lt;br>&lt;/br>
-              &lt;form>
-                &lt;button
-                  style={{ width: "20vw", height: "8vh", fontSize: "3vh" }}
-                  onClick={this.handleGoogleSignIn}
-                  className="btn btn-primary btn-sm"
-                >
-                  Sign In
-                &lt;/button>
-              &lt;/form>
+              &lt;button
+                style={{ width: "20vw", height: "8vh", fontSize: "3vh" }}
+                onClick={this.handleGoogleSignIn}
+                className="btn btn-primary btn-sm"
+              >
+                Sign In
+              &lt;/button>
             &lt;/div>
           &lt;/span>
           &lt;span className="landing-right-wrapper">
@@ -240,7 +236,7 @@ class Login extends React.Component {
               src={process.env.PUBLIC_URL + "/landing_illustration.png"}
             />
           &lt;/span>
-          &lt;Jokes imgState={imgState} />
+          &lt;Jokes imgState={this.state.imgState} />
         &lt;/div>
         &lt;ToastContainer />
       &lt;/div>
