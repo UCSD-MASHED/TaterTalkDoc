@@ -90,6 +90,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
+import { ReactComponent as EnterButton } from "../enter.svg";
 
 /**
  * This is the ChatInput Component for the ChatRoom
@@ -111,18 +112,25 @@ class ChatInput extends React.Component {
               onChange={this.props.handleChange}
               placeholder="Potatoes can't talk... but you can!"
             />
-            {/* &lt;div className="input-group-append">
-                      &lt;button type="button" className="btn" onClick={() => this.toggleEmojiPicker()} id="show-emoji-yes">{'😃'}&lt;/button>
-                  &lt;/div> */}
+            &lt;div className="input-group-append">
+              {/* onClick={() => this.toggleEmojiPicker()}  */}
+              &lt;button
+                type="button"
+                className="btn btn-warning"
+                id="show-emoji-yes"
+              >
+                {"😃"}
+              &lt;/button>
+              &lt;button
+                disabled={!this.props.message}
+                type="submit"
+                className="btn btn-success btn-block"
+                title="Send"
+              >
+                &lt;EnterButton />
+              &lt;/button>
+            &lt;/div>
           &lt;/div>
-
-          &lt;button
-            disabled={!this.props.message}
-            type="submit"
-            className="btn btn-primary btn-block mt-2"
-          >
-            Send
-          &lt;/button>
         &lt;/form>
       &lt;/div>
     );

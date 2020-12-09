@@ -403,7 +403,9 @@ class ChatRoom extends React.Component {
         />
         &lt;div className="chat-wrapper">
           &lt;LogOutButton logout={this.logout} />
-          &lt;h3 data-testid="room-name">{this.state.roomName}&lt;/h3>
+          &lt;h3 className="truncate" data-testid="room-name">
+            {this.state.roomName}
+          &lt;/h3>
           &lt;div className="chat-messages">
             {this.state.messages &amp;&amp;
               this.state.messages.map((msg, i) => (
