@@ -209,8 +209,6 @@ class Login extends React.Component {
   }
 
   render() {
-    const { imgState } = this.state;
-
     return this.state.loading ? (
       &lt;Loading />
     ) : (
@@ -222,15 +220,13 @@ class Login extends React.Component {
               &lt;br>&lt;/br>
               &lt;p>Presented by Team Mashed&lt;/p>
               &lt;br>&lt;/br>
-              &lt;form>
-                &lt;button
-                  style={{ width: "20vw", height: "8vh", fontSize: "3vh" }}
-                  onClick={this.handleGoogleSignIn}
-                  className="btn btn-primary btn-sm"
-                >
-                  Sign In
-                &lt;/button>
-              &lt;/form>
+              &lt;button
+                style={{ width: "20vw", height: "8vh", fontSize: "3vh" }}
+                onClick={this.handleGoogleSignIn}
+                className="btn btn-primary btn-sm"
+              >
+                Sign In
+              &lt;/button>
             &lt;/div>
           &lt;/span>
           &lt;span className="landing-right-wrapper">
@@ -240,7 +236,7 @@ class Login extends React.Component {
               src={process.env.PUBLIC_URL + "/landing_illustration.png"}
             />
           &lt;/span>
-          &lt;Jokes imgState={imgState} />
+          &lt;Jokes imgState={this.state.imgState} />
         &lt;/div>
         &lt;ToastContainer />
       &lt;/div>
