@@ -392,53 +392,53 @@ class ChatRoom extends React.Component {
     return this.state.loading ? (
       &lt;Loading />
     ) : (
-        &lt;span>
-          &lt;nav
-            class="navbar navbar-dark bg-dark"
-            style={{
-              borderBottom: "1px solid #6649b8",
-            }}
-          >
-            &lt;a class="navbar-brand" href="/">
-              TaterTalk
-            &lt;/a>
-            &lt;LogOutButton logout={this.logout} />
-          &lt;/nav>
-          &lt;div className="main">
-            &lt;People
-              user={this.state.user}
-              users={this.state.users}
-              keyword={this.state.keyword}
-              handleSearchChange={this.handleSearchChange}
-              handleChangeRoom={this.handleChangeRoom}
-              checkChatRoomExists={this.checkChatRoomExists}
-            />
-            &lt;div className="chat-wrapper">
-              &lt;div className="chat-person">
-                &lt;h3 className="truncate" data-testid="room-name">
-                  {this.state.roomName}
-                &lt;/h3>
-              &lt;/div>
-              &lt;div className="chat-messages">
-                {this.state.messages &amp;&amp;
-                  this.state.messages.map((msg, i) => (
-                    &lt;ChatMessage
-                      key={i}
-                      message={msg}
-                      username={this.state.user.username}
-                    />
-                  ))}
-                &lt;span ref={this.dummy}>&lt;/span>
-              &lt;/div>
-              &lt;ChatInput
-                message={this.state.message}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-              />
+      &lt;span>
+        &lt;nav
+          class="navbar navbar-dark bg-dark"
+          style={{
+            borderBottom: "1px solid #6649b8",
+          }}
+        >
+          &lt;a class="navbar-brand" href="/">
+            TaterTalk
+          &lt;/a>
+          &lt;LogOutButton logout={this.logout} />
+        &lt;/nav>
+        &lt;div className="main">
+          &lt;People
+            user={this.state.user}
+            users={this.state.users}
+            keyword={this.state.keyword}
+            handleSearchChange={this.handleSearchChange}
+            handleChangeRoom={this.handleChangeRoom}
+            checkChatRoomExists={this.checkChatRoomExists}
+          />
+          &lt;div className="chat-wrapper">
+            &lt;div className="chat-person">
+              &lt;h3 className="truncate" data-testid="room-name">
+                {this.state.roomName}
+              &lt;/h3>
             &lt;/div>
+            &lt;div className="chat-messages">
+              {this.state.messages &amp;&amp;
+                this.state.messages.map((msg, i) => (
+                  &lt;ChatMessage
+                    key={i}
+                    message={msg}
+                    username={this.state.user.username}
+                  />
+                ))}
+              &lt;span ref={this.dummy}>&lt;/span>
+            &lt;/div>
+            &lt;ChatInput
+              message={this.state.message}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
           &lt;/div>
-        &lt;/span>
-      );
+        &lt;/div>
+      &lt;/span>
+    );
   }
 }
 
