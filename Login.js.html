@@ -212,35 +212,32 @@ class Login extends React.Component {
     return this.state.loading ? (
       &lt;Loading />
     ) : (
-      &lt;div className="auth-wrapper">
-        &lt;div className="signin-wrapper">
-          &lt;span className="landing-left-wrapper">
-            &lt;div className="landing-text">
-              &lt;h1>TaterTalk&lt;/h1>
-              &lt;br>&lt;/br>
-              &lt;p>Presented by Team Mashed&lt;/p>
-              &lt;br>&lt;/br>
-              &lt;button
-                style={{ width: "20vw", height: "8vh", fontSize: "3vh" }}
-                onClick={this.handleGoogleSignIn}
-                className="btn btn-primary btn-sm"
-              >
-                Sign In
-              &lt;/button>
-            &lt;/div>
-          &lt;/span>
-          &lt;span className="landing-right-wrapper">
-            &lt;img
-              className="landing-img"
-              alt="illustration"
-              src={process.env.PUBLIC_URL + "/landing_illustration.png"}
-            />
-          &lt;/span>
-          &lt;Jokes imgState={this.state.imgState} />
+        &lt;div className="auth-wrapper">
+          &lt;div className="signin-wrapper">
+            &lt;span className="landing-left-wrapper">
+              &lt;div className="landing-text">
+                &lt;h1>TaterTalk&lt;/h1>
+                &lt;br>&lt;/br>
+                &lt;p>Presented by Team Mashed&lt;/p>
+                &lt;br>&lt;/br>
+                &lt;button
+                  className="btn btn-primary btn-lg"
+                  style={{ padding: "1.5vh 8vw", fontSize: "1.5rem" }}
+                  onClick={this.handleGoogleSignIn}> Sign In&lt;/button>
+              &lt;/div>
+            &lt;/span>
+            &lt;span className="landing-right-wrapper">
+              &lt;img
+                className="landing-img"
+                alt="illustration"
+                src={process.env.PUBLIC_URL + "/landing_illustration.png"}
+              />
+            &lt;/span>
+            &lt;Jokes imgState={this.state.imgState} />
+          &lt;/div>
+          &lt;ToastContainer />
         &lt;/div>
-        &lt;ToastContainer />
-      &lt;/div>
-    );
+      );
   }
 }
 
