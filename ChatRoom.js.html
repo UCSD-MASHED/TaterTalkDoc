@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="global.html#User">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -122,10 +122,10 @@ class ChatRoom extends React.Component {
     };
     this.dummy = createRef();
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeSearch = this.handleChangeSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.handleChangeRoom = this.handleChangeRoom.bind(this);
     this.checkChatRoomExists = this.checkChatRoomExists.bind(this);
+    this.enterRoom = this.enterRoom.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -142,7 +142,7 @@ class ChatRoom extends React.Component {
         const participants = [username, firstUser.username].sort();
         const roomId = await this.checkChatRoomExists(participants);
         if (roomId) {
-          await this.handleChangeRoom(roomId, firstUser);
+          await this.enterRoom(roomId, firstUser);
         }
       }
       this.setState({ loading: false, users: users });
@@ -152,6 +152,17 @@ class ChatRoom extends React.Component {
   handleChange(event) {
     event.preventDefault();
     this.setState({ message: event.target.value });
+  }
+
+  handleChangeSearch(event) {
+    event.preventDefault();
+    this.setState({ keyword: event.target.value }, () => {
+      this.searchPrefix(this.state.keyword, this.state.user.username).then(
+        (users) => {
+          this.setState({ users: users });
+        }
+      );
+    });
   }
 
   handleSubmit(event) {
@@ -164,27 +175,118 @@ class ChatRoom extends React.Component {
     }
   }
 
-  handleSearchChange(event) {
-    event.preventDefault();
-    this.setState({ keyword: event.target.value }, () => {
-      this.searchPrefix(this.state.keyword, this.state.user.username).then(
-        (users) => {
-          this.setState({ users: users });
+  /**
+   * Given a list of participants, check to see if this chat room already exists.
+   * @param {string[]} participants - list of usernames for users in the room which may not exist
+   * @return {string|null} room id of the chat room if found, otherwise null
+   */
+  async checkChatRoomExists(participants) {
+    let roomId = await firebase
+      .firestore()
+      .collection("rooms")
+      .where("participants", "==", participants)
+      .limit(1)
+      .get()
+      .then((qs) => {
+        if (!qs.empty) {
+          const room = qs.docs[0];
+          return room.id;
+        } else {
+          return null;
         }
-      );
-    });
-  }
+      });
+    return roomId;
+  } /* checkChatRoomExists */
 
-  async handleChangeRoom(roomId, otherUser) {
+  /**
+   * Return whether or not the current user is in the current room
+   * @param {string} username - username of the current user
+   * @param {string} roomId - id of the chat room
+   * @return {boolean} true if the user is in the chat room, else false
+   */
+  async checkUserInRoom(username, roomId) {
+    if (!roomId) {
+      return false;
+    }
+    var exist = await firebase
+      .firestore()
+      .collection("users")
+      .where("username", "==", username)
+      .where("roomIds", "array-contains", roomId)
+      .get()
+      .then((qs) => !qs.empty);
+    return exist;
+  } /* checkUserInRoom */
+
+  /**
+   * Enter the chat room with another user
+   * @param {string} roomId - id of the chat room
+   * @param {Object} otherUser - the other user to be chatted with
+   * @param {string} otherUser.displayName - displayed name of the other user
+   */
+  async enterRoom(roomId, otherUser) {
     this.setState({
       roomId: roomId,
       roomName: otherUser.displayName,
     });
-
     await this.getInitMessages(roomId);
-
     await this.getMessages(roomId);
   }
+
+  /**
+   * Fetch the messages of the chat room
+   * @param {string} roomId - id of the chat room
+   */
+  async getInitMessages(roomId) {
+    if (!roomId) {
+      return;
+    }
+    await firebase
+      .firestore()
+      .collection("rooms")
+      .doc(roomId)
+      .collection("messages")
+      .orderBy("timestamp")
+      .get()
+      .then((snapshot) => {
+        let msgs = [];
+        snapshot.forEach((doc) => {
+          msgs.push(doc.data());
+        });
+        this.setState({ messages: msgs });
+        this.scrollToBottom();
+      });
+  } /* getInitMessages */
+
+  /**
+   * Create a listener for a chat room to fetch messages upon updates to
+   * the database
+   * @param {string} roomId - id of the chat room
+   */
+  async getMessages(roomId) {
+    if (!roomId) {
+      return;
+    }
+    await firebase
+      .firestore()
+      .collection("rooms")
+      .doc(roomId)
+      .collection("messages")
+      .orderBy("timestamp")
+      .onSnapshot((snapshot) => {
+        // make sure server timestamp is generated
+        if (snapshot.metadata.hasPendingWrites) {
+          // skip, wait for next one
+          return;
+        }
+        var messages = [];
+        snapshot.forEach((doc) => {
+          messages.push(doc.data());
+        });
+        this.setState({ messages: messages });
+        this.scrollToBottom();
+      });
+  } /* getMessages */
 
   /**
    * Get all the users excluding the current user
@@ -205,7 +307,7 @@ class ChatRoom extends React.Component {
         return users;
       });
     return res;
-  }
+  } /* getUsers */
 
   /**
    * Returns list of users whose username has a longest prefix
@@ -230,50 +332,7 @@ class ChatRoom extends React.Component {
         return users;
       });
     return res;
-  }
-
-  /**
-   * Return whether or not the current user is in the current room
-   * @param {string} username - username of the current user
-   * @param {string} roomId - id of the chat room
-   * @return {boolean} exist - true or false if the user is in the chat room
-   */
-  async checkUserInRoom(username, roomId) {
-    if (!roomId) {
-      return false;
-    }
-    var exist = await firebase
-      .firestore()
-      .collection("users")
-      .where("username", "==", username)
-      .where("roomIds", "array-contains", roomId)
-      .get()
-      .then((qs) => !qs.empty);
-    return exist;
-  }
-
-  /**
-   * Given a list of participants, check to see if this chat room already exists.
-   * @param {string[]} participants - list of usernames for users in the room which may not exist
-   * @return {string|null} roomId - id of the chat room if found, otherwise null
-   */
-  async checkChatRoomExists(participants) {
-    let roomId = await firebase
-      .firestore()
-      .collection("rooms")
-      .where("participants", "==", participants)
-      .limit(1)
-      .get()
-      .then((qs) => {
-        if (!qs.empty) {
-          const room = qs.docs[0];
-          return room.id;
-        } else {
-          return null;
-        }
-      });
-    return roomId;
-  }
+  } /* searchPrefix */
 
   /**
    * Update user timestamp and append message to room of messages.
@@ -309,72 +368,7 @@ class ChatRoom extends React.Component {
       .add(newMessage);
 
     this.setState({ message: "" }); // set message bar text back to placeholder (empty)
-  }
-
-  /**
-   * Fetch the messages of the chat room
-   * @param {string} roomId - id of the chat room
-   * @return {string[]} messages - list of strings of messages found
-   */
-  async getInitMessages(roomId) {
-    if (!roomId) {
-      return;
-    }
-    await firebase
-      .firestore()
-      .collection("rooms")
-      .doc(roomId)
-      .collection("messages")
-      .orderBy("timestamp")
-      .get()
-      .then((snapshot) => {
-        let msgs = [];
-        snapshot.forEach((doc) => {
-          msgs.push(doc.data());
-        });
-        this.setState({ messages: msgs });
-        this.scrollToBottom();
-      });
-  }
-
-  /**
-   * Create a listener for a chat room to fetch messages upon updates to
-   * the database
-   * @param {string} roomId - id of the chat room
-   */
-  async getMessages(roomId) {
-    if (!roomId) {
-      return;
-    }
-    await firebase
-      .firestore()
-      .collection("rooms")
-      .doc(roomId)
-      .collection("messages")
-      .orderBy("timestamp")
-      .onSnapshot((snapshot) => {
-        // make sure server timestamp is generated
-        if (snapshot.metadata.hasPendingWrites) {
-          // skip, wait for next one
-          return;
-        }
-        var messages = [];
-        snapshot.forEach((doc) => {
-          messages.push(doc.data());
-        });
-        this.setState({ messages: messages });
-        this.scrollToBottom();
-      });
-  }
-
-  /**
-   * Helper function to scroll to the bottom of the chat room
-   */
-  scrollToBottom() {
-    if (this.dummy.current) {
-      this.dummy.current.scrollIntoView();
-    }
-  }
+  } /* sendMessage */
 
   /**
    * Logs current user out and returns to landing page
@@ -388,51 +382,49 @@ class ChatRoom extends React.Component {
       });
   }
 
+  /**
+   * Helper function to scroll to the bottom of the chat room
+   */
+  scrollToBottom() {
+    if (this.dummy.current) {
+      this.dummy.current.scrollIntoView();
+    }
+  }
+
   render() {
     return this.state.loading ? (
       &lt;Loading />
     ) : (
-      &lt;div style={{ height: "100%" }}>
-        &lt;div className="chat-header">
-          &lt;span className="chat-title">
-            TaterTalk
-            &lt;span className="logout-btn">
-              &lt;LogOutButton logout={this.logout} />
-            &lt;/span>
-          &lt;/span>
-        &lt;/div>
-        &lt;div className="main">
-          &lt;People
-            user={this.state.user}
-            users={this.state.users}
-            keyword={this.state.keyword}
-            handleSearchChange={this.handleSearchChange}
-            handleChangeRoom={this.handleChangeRoom}
-            checkChatRoomExists={this.checkChatRoomExists}
-          />
-          &lt;div className="chat-wrapper">
-            &lt;div className="chat-person">
-              &lt;h3 className="truncate" data-testid="room-name">
-                {this.state.roomName}
-              &lt;/h3>
-            &lt;/div>
-            &lt;div className="chat-messages">
-              {this.state.messages &amp;&amp;
-                this.state.messages.map((msg, i) => (
-                  &lt;ChatMessage
-                    key={i}
-                    message={msg}
-                    username={this.state.user.username}
-                  />
-                ))}
-              &lt;span ref={this.dummy}>&lt;/span>
-            &lt;/div>
-            &lt;ChatInput
-              message={this.state.message}
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-            />
+      &lt;div className="main">
+        &lt;People
+          keyword={this.state.keyword}
+          user={this.state.user}
+          users={this.state.users}
+          enterRoom={this.enterRoom}
+          handleChangeSearch={this.handleChangeSearch}
+          checkChatRoomExists={this.checkChatRoomExists}
+        />
+        &lt;div className="chat-wrapper">
+          &lt;LogOutButton logout={this.logout} />
+          &lt;h3 className="truncate" data-testid="room-name">
+            {this.state.roomName}
+          &lt;/h3>
+          &lt;div className="chat-messages">
+            {this.state.messages &amp;&amp;
+              this.state.messages.map((msg, i) => (
+                &lt;ChatMessage
+                  key={i}
+                  message={msg}
+                  username={this.state.user.username}
+                />
+              ))}
+            &lt;span ref={this.dummy}>&lt;/span>
           &lt;/div>
+          &lt;ChatInput
+            message={this.state.message}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
         &lt;/div>
       &lt;/div>
     );
