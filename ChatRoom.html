@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="global.html#User">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul></div>
                 
             </nav>
         </div>
@@ -348,7 +348,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line92">line 92</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line169">line 169</a>
             </span>
         </p>
     
@@ -379,7 +379,7 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>room id of the chat room if found, otherwise null</p></div>
+    <div class='param-desc column is-7'><p>roomId - id of the chat room if found, otherwise null</p></div>
     
     
     <div class='column is-5 has-text-left'>
@@ -553,7 +553,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line116">line 116</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line150">line 150</a>
             </span>
         </p>
     
@@ -584,7 +584,7 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>true if the user is in the chat room, else false</p></div>
+    <div class='param-desc column is-7'><p>exist - true or false if the user is in the chat room</p></div>
     
     
     <div class='column is-5 has-text-left'>
@@ -610,209 +610,6 @@
 
 
     
-    <h4 class="name" id="enterRoom">
-        <a class="href-link" href="#enterRoom">#</a>
-        
-            
-                <span class='tag'>async</span>
-            
-        
-        <span class="code-name">
-            
-                enterRoom<span class="signature">(roomId, otherUser)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Enter the chat room with another user</p>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>roomId</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>id of the chat room</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>otherUser</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Object</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>the other user to be chatted with</p></td>
-</tr>
-
-  
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>displayName</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>displayed name of the other user</p></td>
-</tr>
-
-  
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="ChatRoom.js.html" class="button">View Source</a>
-            <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line136">line 136</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
     <h4 class="name" id="getInitMessages">
         <a class="href-link" href="#getInitMessages">#</a>
         
@@ -822,7 +619,7 @@
         
         <span class="code-name">
             
-                getInitMessages<span class="signature">(roomId)</span><span class="type-signature"></span>
+                getInitMessages<span class="signature">(roomId)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
             
         </span>
     </h4>
@@ -933,7 +730,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line149">line 149</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line228">line 228</a>
             </span>
         </p>
     
@@ -955,6 +752,31 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>messages - list of strings of messages found</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -1086,7 +908,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line175">line 175</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line254">line 254</a>
             </span>
         </p>
     
@@ -1238,7 +1060,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line205">line 205</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line103">line 103</a>
             </span>
         </p>
     
@@ -1360,7 +1182,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line285">line 285</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line291">line 291</a>
             </span>
         </p>
     
@@ -1457,7 +1279,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line297">line 297</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line282">line 282</a>
             </span>
         </p>
     
@@ -1635,7 +1457,7 @@ match of the input keyword</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line228">line 228</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line126">line 126</a>
             </span>
         </p>
     
@@ -1862,7 +1684,7 @@ match of the input keyword</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line252">line 252</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line193">line 193</a>
             </span>
         </p>
     
