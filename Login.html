@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul></div>
                 
             </nav>
         </div>
@@ -237,7 +237,7 @@
         
         <span class="code-name">
             
-                getUser<span class="signature">(googleUser)</span><span class="type-signature"> &rarr; {<a href="global.html#_User">_User</a>|undefined}</span>
+                getUser<span class="signature">(googleUser)</span><span class="type-signature"> &rarr; {user|undefined}</span>
             
         </span>
     </h4>
@@ -290,7 +290,7 @@
   <td class="type">
   
       
-<span class="param-type"><a href="global.html#_GoogleUser">_GoogleUser</a></span>
+<span class="param-type">Object</span>
 
 
   
@@ -300,8 +300,58 @@
 
   
 
-  <td class="description last"><p>google user to be found in database</p></td>
+  <td class="description last"><p>The google user to be found in database</p></td>
 </tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>uid</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The unique id of the google user</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>displayName</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The displayed name of the
+google user</p></td>
+</tr>
+
+  
 
 
         
@@ -348,7 +398,7 @@
         <p class="tag-source">
             <a href="Login.js.html" class="button">View Source</a>
             <span>
-                <a href="Login.js.html">Login.js</a>, <a href="Login.js.html#line89">line 89</a>
+                <a href="Login.js.html">Login.js</a>, <a href="Login.js.html#line104">line 104</a>
             </span>
         </p>
     
@@ -379,14 +429,14 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p><a href="global.html#_User">user</a> if googleUser.uid is
-unique in database; otherwise undefined</p></div>
+    <div class='param-desc column is-7'><p>A user object if googleUser.uid is unique
+in database; otherwise return undefined</p></div>
     
     
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type"><a href="global.html#_User">_User</a></span>
+<span class="param-type">user</span>
 |
 
 <span class="param-type">undefined</span>
@@ -529,156 +579,7 @@ else we will take them to Chat.</p>
         <p class="tag-source">
             <a href="Login.js.html" class="button">View Source</a>
             <span>
-                <a href="Login.js.html">Login.js</a>, <a href="Login.js.html#line64">line 64</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="loginWithGoogleUserAndRedirect">
-        <a class="href-link" href="#loginWithGoogleUserAndRedirect">#</a>
-        
-        <span class="code-name">
-            
-                loginWithGoogleUserAndRedirect<span class="signature">(googleUser)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Log in the google user and redirect to the chat room page if the user exists,
-otherwise, redirect to the user creation page</p>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>googleUser</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type"><a href="global.html#_GoogleUser">_GoogleUser</a></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>google user to be logged in and redirected</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="Login.js.html" class="button">View Source</a>
-            <span>
-                <a href="Login.js.html">Login.js</a>, <a href="Login.js.html#line104">line 104</a>
+                <a href="Login.js.html">Login.js</a>, <a href="Login.js.html#line76">line 76</a>
             </span>
         </p>
     

@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul></div>
                 
             </nav>
         </div>
@@ -111,12 +111,6 @@ class Login extends React.Component {
     this.incrementImgState = this.incrementImgState.bind(this);
   }
 
-  incrementImgState() {
-    this.setState({
-      imgState: this.state.imgState &lt; 4 ? this.state.imgState + 1 : 0,
-    });
-  }
-
   componentDidMount() {
     this.unsubscribeAuthListener = firebase
       .auth()
@@ -142,6 +136,24 @@ class Login extends React.Component {
     if (this.timer) {
       clearInterval(this.timer);
     }
+  }
+
+  loginWithGoogleUserAndRedirect(googleUser) {
+    this.getUser(googleUser)
+      .then((user) => {
+        // console.log(user);
+        if (user) {
+          // console.log("user exists, go to chat");
+          this.props.history.push("/chatRoom", { user });
+        } else {
+          // console.log("user does not exists, go to create user");
+          this.props.history.push("/createUser", { googleUser });
+        }
+      })
+      .catch((err) => {
+        // console.log(err);
+        toast.error(err);
+      });
   }
 
   /**
@@ -173,9 +185,12 @@ class Login extends React.Component {
 
   /**
    * Get the user from googleUser
-   * @param {_GoogleUser} googleUser - google user to be found in database
-   * @return {_User|undefined} [user]{@link _User} if googleUser.uid is 
-   *     unique in database; otherwise undefined
+   * @param {Object} googleUser - The google user to be found in database
+   * @param {string} googleUser.uid - The unique id of the google user
+   * @param {string} googleUser.displayName - The displayed name of the
+   *     google user
+   * @return {(user|undefined)} A user object if googleUser.uid is unique
+   *     in database; otherwise return undefined
    */
   async getUser(googleUser) {
     var res = await firebase
@@ -187,27 +202,10 @@ class Login extends React.Component {
     return res;
   }
 
-  /**
-   * Log in the google user and redirect to the chat room page if the user exists,
-   * otherwise, redirect to the user creation page
-   * @param {_GoogleUser} googleUser - google user to be logged in and redirected
-   */
-  loginWithGoogleUserAndRedirect(googleUser) {
-    this.getUser(googleUser)
-      .then((user) => {
-        // console.log(user);
-        if (user) {
-          // console.log("user exists, go to chat");
-          this.props.history.push("/chatRoom", { user });
-        } else {
-          // console.log("user does not exists, go to create user");
-          this.props.history.push("/createUser", { googleUser });
-        }
-      })
-      .catch((err) => {
-        // console.log(err);
-        toast.error(err);
-      });
+  incrementImgState() {
+    this.setState({
+      imgState: this.state.imgState &lt; 4 ? this.state.imgState + 1 : 0,
+    });
   }
 
   render() {
@@ -223,7 +221,7 @@ class Login extends React.Component {
               &lt;p>Presented by Team Mashed&lt;/p>
               &lt;br>&lt;/br>
               &lt;button
-                style={{ width: "20vw", height: "8vh", fontSize: "3vh" }}
+                style={{ padding: "1.5vh 8vw", fontSize: "1.5rem" }}
                 onClick={this.handleGoogleSignIn}
                 className="btn btn-primary btn-sm"
               >
