@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="global.html#User">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -495,7 +495,7 @@
   <td class="type">
   
       
-<span class="param-type">string</span>
+<span class="param-type">_Room.roomId</span>
 
 
   
@@ -505,7 +505,7 @@
 
   
 
-  <td class="description last"><p>id of the chat room</p></td>
+  <td class="description last"><p>id of the <a href="global.html#_Room">room</a></p></td>
 </tr>
 
 
@@ -619,7 +619,7 @@
         
         <span class="code-name">
             
-                enterRoom<span class="signature">(roomId, otherUser)</span><span class="type-signature"></span>
+                enterRoom<span class="signature">(roomId, roomName)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -691,31 +691,7 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>otherUser</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type"><a href="global.html#User">User</a></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>the other user to be chatted with</p></td>
-</tr>
-
-  
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>displayName</code></td>
+      <td class="name"><code>roomName</code></td>
   
 
   <td class="type">
@@ -733,8 +709,6 @@
 
   <td class="description last"><p>displayed name of the other user</p></td>
 </tr>
-
-  
 
 
         
@@ -781,7 +755,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line136">line 136</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line135">line 135</a>
             </span>
         </p>
     
@@ -933,7 +907,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line149">line 149</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line148">line 148</a>
             </span>
         </p>
     
@@ -1086,7 +1060,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line175">line 175</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line174">line 174</a>
             </span>
         </p>
     
@@ -1127,7 +1101,7 @@ the database</p>
         
         <span class="code-name">
             
-                getUsers<span class="signature">(username)</span><span class="type-signature"> &rarr; {Array.&lt;user>}</span>
+                getUsers<span class="signature">(username)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="global.html#_User">_User</a>>}</span>
             
         </span>
     </h4>
@@ -1238,7 +1212,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line205">line 205</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line204">line 204</a>
             </span>
         </p>
     
@@ -1275,7 +1249,7 @@ the database</p>
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type">Array.&lt;user></span>
+<span class="param-type">Array.&lt;<a href="global.html#_User">_User</a>></span>
 
 
     </div>
@@ -1360,7 +1334,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line285">line 285</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line284">line 284</a>
             </span>
         </p>
     
@@ -1457,7 +1431,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line297">line 297</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line296">line 296</a>
             </span>
         </p>
     
@@ -1498,7 +1472,7 @@ the database</p>
         
         <span class="code-name">
             
-                searchPrefix<span class="signature">(username, keyword)</span><span class="type-signature"> &rarr; {Array.&lt;user>}</span>
+                searchPrefix<span class="signature">(username, keyword)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="global.html#_User">_User</a>>}</span>
             
         </span>
     </h4>
@@ -1635,7 +1609,7 @@ match of the input keyword</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line228">line 228</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line227">line 227</a>
             </span>
         </p>
     
@@ -1672,7 +1646,7 @@ match of the input keyword</p>
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type">Array.&lt;user></span>
+<span class="param-type">Array.&lt;<a href="global.html#_User">_User</a>></span>
 
 
     </div>
@@ -1862,7 +1836,7 @@ match of the input keyword</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line252">line 252</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line251">line 251</a>
             </span>
         </p>
     
