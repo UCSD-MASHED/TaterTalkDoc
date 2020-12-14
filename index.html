@@ -206,8 +206,8 @@ CYPRESS_APPID=1:...
 CYPRESS_TEST_UID=...
 </code></pre>
 <p><code>*_APIKEY</code>, <code>*_AUTHDOMAIN</code>, <code>*_DATABASEURL</code>, <code>*_PROJECTID</code>, <code>*_STORAGEBUCKET</code>, <code>*_MESSAGINGSENDERID</code> and <code>*_APPID</code> are provided by the Firebase project you created. They are used to <a href="https://firebase.google.com/docs/web/setup#add-sdks-initialize">initialize the Firebase app</a> using the Firebase SDK. You can read more about it in <a href="https://support.google.com/firebase/answer/7015592">here</a> as well.</p>
-<p>All the variables that start with <code>REACT_APP_</code> are imported by CRA in our web app, they are the credentials we need to initialize Firebase app using Firebase SDK.</p>
-<p>All the variables that start with <code>CYPRESS_</code> are imported by Cypress in test runs. We need them so that we can communicate with Firebase in our End to End environment.</p>
+<p>We prepend <code>REACT_APP_</code> to the environment variables introduced above so that they are imported by CRA automatically.</p>
+<p>We also prepend <code>CYPRESS_</code> to the same environment variables so that they are imported by Cypress in test runs. We need them so that we can communicate with Firebase in our End to End environment.</p>
 <p><code>CYPRESS_TEST_UID</code> is needed for <code>cypress-firebase</code> so that it can log in as a test user through Firebase Authentication. See more details <a href="https://github.com/prescottprue/cypress-firebase#cylogin">here</a>.</p>
 <h4><code>serviceAccount.json</code></h4>
 <p>This is a JSON configuration file that was generated in Firebase, you can follow this <a href="https://firebase.google.com/docs/admin/setup#initialize-sdk">link</a> for instructions. We need this file so that our third-party plugin <a href="https://github.com/prescottprue/cypress-firebase">cypress-firebase</a> can utilize the firebase-admin SDK to test Firebase project.</p>
