@@ -205,7 +205,7 @@ CYPRESS_MESSAGINGSENDERID=...
 CYPRESS_APPID=1:...
 CYPRESS_TEST_UID=...
 </code></pre>
-<p><code>*_APIKEY</code>, <code>*_AUTHDOMAIN</code>, <code>*_DATABASEURL</code>, <code>*_PROJECTID</code>, <code>*_STORAGEBUCKET</code>, <code>*_MESSAGINGSENDERID</code> and <code>*_APPID</code> are provided by the Firebase project you created. They are used to <a href="https://firebase.google.com/docs/web/setup#add-sdks-initialize">initialize the Firebase app</a> using the Firebase SDK. You can find more about them <a href="https://support.google.com/firebase/answer/7015592">here</a>.</p>
+<p><code>*_APIKEY</code>, <code>*_AUTHDOMAIN</code>, <code>*_DATABASEURL</code>, <code>*_PROJECTID</code>, <code>*_STORAGEBUCKET</code>, <code>*_MESSAGINGSENDERID</code> and <code>*_APPID</code> are provided by the Firebase project you created. They are used to <a href="https://firebase.google.com/docs/web/setup#add-sdks-initialize">initialize the Firebase app</a> using the Firebase SDK. You can read more about it in <a href="https://support.google.com/firebase/answer/7015592">here</a> as well.</p>
 <p>All the variables that start with <code>REACT_APP_</code> are imported by CRA in our web app, they are the credentials we need to initialize Firebase app using Firebase SDK.</p>
 <p>All the variables that start with <code>CYPRESS_</code> are imported by Cypress in test runs. We need them so that we can communicate with Firebase in our End to End environment.</p>
 <p><code>CYPRESS_TEST_UID</code> is needed for <code>cypress-firebase</code> so that it can log in as a test user through Firebase Authentication. See more details <a href="https://github.com/prescottprue/cypress-firebase#cylogin">here</a>.</p>
@@ -236,7 +236,7 @@ See the section about <a href="https://facebook.github.io/create-react-app/docs/
 <p>The goal here is to have at least one test case per each unit (function) so that we can be confident that all functions should behave as expected.</p>
 <h3>Cypress</h3>
 <p>For our E2E tests, we decided to go with <a href="https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell">Cypress</a> because it's well-documented and provides good support for asynchronous tests and easy to setup.</p>
-<p>Learn how to configure Cypress <a href="https://docs.cypress.io/guides/references/configuration.html">here</a></p>
+<p>Learn how to configure Cypress <a href="https://docs.cypress.io/guides/references/configuration.html">here</a>.</p>
 <p>It's worth mentioning that since E2E tests require talking to the actual backend server (in our case, this is Firebase), we also need to setup environment variables so that Cypress can test Firebase related features. The detail configuration is covered <a href="#envdev">here</a>.</p>
 <p>For reference, you can look at our <code>cypress.json</code> in root directory for our own configuration of Cypress.</p>
 <h3>Code Coverage</h3>
