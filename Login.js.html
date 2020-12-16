@@ -216,10 +216,18 @@ class Login extends React.Component {
         &lt;div className="signin-wrapper">
           &lt;span className="landing-left-wrapper">
             &lt;div className="landing-text">
-              &lt;h1>TaterTalk&lt;/h1>
-              &lt;br>&lt;/br>
-              &lt;p>Presented by Team Mashed&lt;/p>
-              &lt;br>&lt;/br>
+              &lt;div>
+                &lt;img
+                  className="tatertalk-login d-none d-lg-inline"
+                  alt="icon"
+                  src={process.env.PUBLIC_URL + "/tatertalk_icon.png"}
+                />
+                &lt;span>
+                  &lt;h1 style={{ display: "inline" }}>TaterTalk&lt;/h1>
+                  &lt;br>&lt;/br>
+                  &lt;p>Presented by Team Mashed&lt;/p>
+                &lt;/span>
+              &lt;/div>
               &lt;button
                 style={{ padding: "1.5vh 8vw", fontSize: "1.5rem" }}
                 onClick={this.handleGoogleSignIn}
