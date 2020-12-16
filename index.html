@@ -139,7 +139,7 @@
 <li><a href="#yarn-run-cyopen"><code>yarn run cy:open</code></a></li>
 </ul>
 </li>
-<li><a href="#code-and-js-doc-documentation">Code and JS Doc Documentation</a></li>
+<li><a href="#code-and-jsdoc-documentation">Code and JSDoc Documentation</a></li>
 <li><a href="#testing">Testing</a>
 <ul>
 <li><a href="#jest">Jest</a></li>
@@ -213,8 +213,8 @@ CYPRESS_TEST_UID=...
 <h4><code>serviceAccount.json</code></h4>
 <p>This is a JSON configuration file that was generated in Firebase. You can follow this <a href="https://firebase.google.com/docs/admin/setup#initialize-sdk">link</a> for instructions. We need this file so that our third-party plugin <a href="https://github.com/prescottprue/cypress-firebase">cypress-firebase</a> can utilize the firebase-admin SDK to test the Firebase project.</p>
 <h3>Workflow Setup</h3>
-<p>We have several GitHub Actions <a href=".github/workflows">workflows</a> configured in our repo. These workflows build, run, test, and deploy our project. In addition, they are configured to preview and deploy pull requests and merges into our dev branch to a second Firebase application - a &quot;beta&quot; app that we use as our development application. In addition to our workflows deploying to this beta app, they also deploy our JS Doc documentation, Jest coverage report, and Code climate report. Because our workflows are configured to work with this beta app and other resources, this means that our workflow files will not work for your project out-of-the-box.</p>
-<p>If you would like to use our workflow setup as a template, you will need to set up Jest coverage, Code Climate, JS Doc, and a secondary &quot;beta&quot; app for your porject. For more information on how to do this, see the relevant sections and links at the end of this document.</p>
+<p>We have several GitHub Actions <a href=".github/workflows">workflows</a> configured in our repo. These workflows build, run, test, and deploy our project. In addition, they are configured to preview and deploy pull requests and merges into our dev branch to a second Firebase application - a &quot;beta&quot; app that we use as our development application. In addition to our workflows deploying to this beta app, they also deploy our JSDoc documentation, Jest coverage report, and Code climate report. Because our workflows are configured to work with this beta app and other resources, this means that our workflow files will not work for your project out-of-the-box.</p>
+<p>If you would like to use our workflow setup as a template, you will need to set up Jest coverage, Code Climate, JSDoc, and a secondary &quot;beta&quot; app for your porject. For more information on how to do this, see the relevant sections and links at the end of this document.</p>
 <p>If you would not like to use our workflow setup or would like to adapt it, be sure to update these files according to your desired workflows.</p>
 <p>After setting up the environment files and your own workflow files, you should install all the project dependencies by doing <code>yarn install</code>. Once the installation is done, you should be able to utilize the commands in the Scripts section below.</p>
 <h2>Scripts</h2>
@@ -230,7 +230,7 @@ See the section about <a href="https://facebook.github.io/create-react-app/docs/
 <p>Launches the Cypress test runner in command-line mode. See more details <a href="https://docs.cypress.io/guides/guides/command-line.html#How-to-run-commands">here</a>.</p>
 <h3><code>yarn run cy:open</code></h3>
 <p>Launches the Cypress GUI test runner. See more details <a href="https://docs.cypress.io/guides/getting-started/installing-cypress.html#Opening-Cypress">here</a>.</p>
-<h2>Code and JS Doc Documentation</h2>
+<h2>Code and JSDoc Documentation</h2>
 <p>If you are interested in our implementation, we have a JSDoc document website hosted <a href="https://ucsd-mashed.github.io/TaterTalkDoc/">here</a> that documents all of our code for this project.</p>
 <p>Learn how to configure JSDoc <a href="https://jsdoc.app/about-configuring-jsdoc.html">here</a>.</p>
 <p>For reference, you can look at our <code>jsdoc.json</code> in the root directory for our own configuration of JSDoc.</p>
