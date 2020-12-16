@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ChatInput.js</title>
+  <title> Jokes</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -79,93 +77,312 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>ChatInput.js</h1>
+                    <p>Class</p>
+                    <h1>Jokes</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import { ReactComponent as EnterButton } from "../enter.svg";
-import { addEmoji, toggleEmojiPicker } from "../utils/emoji.js";
-import EmojiPicker from "../utils/emoji.js";
-import data from "emoji-mart/data/apple.json";
+        <h2><span class="attribs"><span class="type-signature"></span></span>Jokes</h2>
+        
+            <div class="class-description"><p>This is the Jokes Component used to render jokes and answers images.</p></div>
+        
+    
+</header>
 
-/**
- * This is the ChatInput Component used to render the chat input box.
- * @hideconstructor
- */
-class ChatInput extends React.Component {
-  constructor(props) {
-    super(props);
+<article>
+    <div class="container-overview">
+    
+        
+            
 
-    this.inputRef = React.createRef();
-    this.addEmoji = addEmoji.bind(this);
-    this.toggleEmojiPicker = toggleEmojiPicker.bind(this);
-    this.state = {
-      showEmojiPicker: false,
-    };
-  }
 
-  render() {
-    return (
-      &lt;div className="chat-input">
-        {this.state.showEmojiPicker &amp;&amp; (
-          &lt;EmojiPicker
-            onClickOutside={() => this.toggleEmojiPicker()}
-            title={"Pick your emoji"}
-            emoji={"point_up"}
-            data={data}
-            style={{ position: "absolute", bottom: "2.7rem", right: "0" }}
-            set="apple"
-            onSelect={this.addEmoji}
-            showPreview={false}
-            showSkinTones={false}
-          />
-        )}
-        &lt;form onSubmit={this.props.handleSubmit}>
-          &lt;div className="input-group chat-box">
-            &lt;input
-              className="form-control"
-              type="text"
-              value={this.props.message}
-              onChange={this.props.handleChange}
-              placeholder="Potatoes can't talk... but you can!"
-              ref={this.inputRef}
-            />
-            &lt;div className="input-group-append">
-              &lt;button
-                type="button"
-                className="btn btn-warning ignore-react-onclickoutside"
-                id="show-emoji-yes"
-                onClick={() => this.toggleEmojiPicker()}
-              >
-                {"😃"}
-              &lt;/button>
-              &lt;button
-                disabled={!this.props.message}
-                type="submit"
-                className="btn btn-success btn-block"
-                title="Send"
-              >
-                &lt;EnterButton />
-              &lt;/button>
-            &lt;/div>
-          &lt;/div>
-        &lt;/form>
-      &lt;/div>
-    );
-  }
-}
 
-export default ChatInput;
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Jokes.js.html" class="button">View Source</a>
+            <span>
+                <a href="Jokes.js.html">Jokes.js</a>, <a href="Jokes.js.html#line31">line 31</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="displayImgs">
+        <a class="href-link" href="#displayImgs">#</a>
+        
+        <span class="code-name">
+            
+                displayImgs<span class="signature">(images, imgState)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Helper function to display images</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>images</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array.&lt;string></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>list of images</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>imgState</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">int</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>an integer indicator used for cycling through each of the images</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Jokes.js.html" class="button">View Source</a>
+            <span>
+                <a href="Jokes.js.html">Jokes.js</a>, <a href="Jokes.js.html#line37">line 37</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

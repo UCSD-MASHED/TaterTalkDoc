@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> User</title>
+  <title> Global</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,8 +77,8 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>User</h1>
+                    <p>Title</p>
+                    <h1>Global</h1>
                 </header>
                 
 
@@ -89,10 +89,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>User</h2>
-        
-            <div class="class-description"><p>This is the User Component used to handle the user actions in the user list
-such as starting a chat with another user.</p></div>
+        <h2></h2>
         
     
 </header>
@@ -101,19 +98,8 @@ such as starting a chat with another user.</p></div>
     <div class="container-overview">
     
         
-            
 
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
 <dl class="details">
@@ -148,40 +134,15 @@ such as starting a chat with another user.</p></div>
     
 
     
-        <p class="tag-source">
-            <a href="User.js.html" class="button">View Source</a>
-            <span>
-                <a href="User.js.html">User.js</a>, <a href="User.js.html#line11">line 11</a>
-            </span>
-        </p>
-    
 </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         
     
     </div>
     
+    
+
     
 
     
@@ -198,34 +159,27 @@ such as starting a chat with another user.</p></div>
 
     
         <div class='vertical-section'>
-            <h1>Methods</h1>
+            <h1>Type Definitions</h1>
             <div class="members">
             
                 <div class="member">
 
-
-    
-    <h4 class="name" id="createRoom">
-        <a class="href-link" href="#createRoom">#</a>
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
         
-            
-                <span class='tag'>async</span>
-            
-        
-        <span class="code-name">
-            
-                createRoom<span class="signature">(participants)</span><span class="type-signature"> &rarr; {string}</span>
-            
-        </span>
-    </h4>
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="_GoogleUser">
+    <a class="href-link" href="#_GoogleUser">#</a>
     
-
+    <span class="code-name">
+        _GoogleUser
+    </span>
     
-    
-    <div class="description">
-        <p>Create a new chat room for participants</p>
-    </div>
-    
+</h4>
 
 
 
@@ -234,11 +188,11 @@ such as starting a chat with another user.</p></div>
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
 
-    <h5>Parameters:</h5>
     
 <div class="table-container">
-    <table class="params table">
+    <table class="props table">
         <thead>
         <tr>
             
@@ -257,216 +211,55 @@ such as starting a chat with another user.</p></div>
 
         <tbody>
         
-
             
 <tr class="deep-level-0">
-  
-      <td class="name"><code>participants</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Array.&lt;string></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>list of usernames for <a href="global.html#_User">users</a> in a <a href="global.html#_Room">room</a></p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
+    
+        <td class="name"><code>displayName</code></td>
     
 
+    <td class="type">
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="User.js.html" class="button">View Source</a>
-            <span>
-                <a href="User.js.html">User.js</a>, <a href="User.js.html#line21">line 21</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>id of the newly created chat <a href="global.html#_Room">room</a></p></div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
         
 <span class="param-type">string</span>
 
 
-    </div>
     
-</div>
+    </td>
 
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="openChatRoom">
-        <a class="href-link" href="#openChatRoom">#</a>
-        
-            
-                <span class='tag'>async</span>
-            
-        
-        <span class="code-name">
-            
-                openChatRoom<span class="signature">(participants)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
     
 
     
-    
-    <div class="description">
-        <p>Find and open a chat room containing the list of participants
-given. If no chat room exists, create a new chat room with these
-participants. Will call the parent handler to switch to the found
-chat room.</p>
-    </div>
-    
 
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>participants</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Array.&lt;string></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>list of usernames for <a href="global.html#_User">users</a> in a <a href="global.html#_Room">room</a></p></td>
+    <td class="description last"><p>the displayed name of the Google user</p></td>
 </tr>
 
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>uid</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the unique identifier of the Google user</p></td>
+</tr>
 
         
         </tbody>
     </table>
 </div>
-
-
 
 
 
@@ -503,29 +296,13 @@ chat room.</p>
 
     
         <p class="tag-source">
-            <a href="User.js.html" class="button">View Source</a>
+            <a href="Types.js.html" class="button">View Source</a>
             <span>
-                <a href="User.js.html">User.js</a>, <a href="User.js.html#line39">line 39</a>
+                <a href="Types.js.html">Types.js</a>, <a href="Types.js.html#line1">line 1</a>
             </span>
         </p>
     
 </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -535,29 +312,22 @@ chat room.</p>
             
                 <div class="member">
 
-
-    
-    <h4 class="name" id="setRoomId">
-        <a class="href-link" href="#setRoomId">#</a>
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
         
-            
-                <span class='tag'>async</span>
-            
-        
-        <span class="code-name">
-            
-                setRoomId<span class="signature">(roomId, participants)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="_Message">
+    <a class="href-link" href="#_Message">#</a>
     
-
+    <span class="code-name">
+        _Message
+    </span>
     
-    
-    <div class="description">
-        <p>Set the roomId to the lists of each user in this chat room</p>
-    </div>
-    
+</h4>
 
 
 
@@ -566,11 +336,11 @@ chat room.</p>
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
 
-    <h5>Parameters:</h5>
     
 <div class="table-container">
-    <table class="params table">
+    <table class="props table">
         <thead>
         <tr>
             
@@ -589,61 +359,101 @@ chat room.</p>
 
         <tbody>
         
-
             
 <tr class="deep-level-0">
-  
-      <td class="name"><code>roomId</code></td>
-  
+    
+        <td class="name"><code>messageId</code></td>
+    
 
-  <td class="type">
-  
-      
+    <td class="type">
+    
+        
 <span class="param-type">string</span>
 
 
-  
-  </td>
+    
+    </td>
 
-  
+    
 
-  
+    
 
-  <td class="description last"><p>id of the <a href="global.html#_Room">room</a></p></td>
+    <td class="description last"><p>document identifier generated by Firestore</p></td>
 </tr>
-
 
         
-
             
 <tr class="deep-level-0">
-  
-      <td class="name"><code>participants</code></td>
-  
+    
+        <td class="name"><code>message</code></td>
+    
 
-  <td class="type">
-  
-      
-<span class="param-type">Array.&lt;string></span>
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
 
 
-  
-  </td>
+    
+    </td>
 
-  
+    
 
-  
+    
 
-  <td class="description last"><p>list of usernames for <a href="global.html#_User">users</a> in the <a href="global.html#_Room">room</a></p></td>
+    <td class="description last"><p>the content of the message</p></td>
 </tr>
 
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>timestamp</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">timestamp</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>epoch timestamp of when the message was sent</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>username</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the username of the <a href="global.html#_User">user</a> who sent this message</p></td>
+</tr>
 
         
         </tbody>
     </table>
 </div>
-
-
 
 
 
@@ -680,29 +490,13 @@ chat room.</p>
 
     
         <p class="tag-source">
-            <a href="User.js.html" class="button">View Source</a>
+            <a href="Types.js.html" class="button">View Source</a>
             <span>
-                <a href="User.js.html">User.js</a>, <a href="User.js.html#line56">line 56</a>
+                <a href="Types.js.html">Types.js</a>, <a href="Types.js.html#line8">line 8</a>
             </span>
         </p>
     
 </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -712,25 +506,22 @@ chat room.</p>
             
                 <div class="member">
 
-
-    
-    <h4 class="name" id="startPrivateChat">
-        <a class="href-link" href="#startPrivateChat">#</a>
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
         
-        <span class="code-name">
-            
-                startPrivateChat<span class="signature">(targetUsername, username)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="_Room">
+    <a class="href-link" href="#_Room">#</a>
     
-
+    <span class="code-name">
+        _Room
+    </span>
     
-    
-    <div class="description">
-        <p>Open a chat room given two participants</p>
-    </div>
-    
+</h4>
 
 
 
@@ -739,11 +530,11 @@ chat room.</p>
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
 
-    <h5>Parameters:</h5>
     
 <div class="table-container">
-    <table class="params table">
+    <table class="props table">
         <thead>
         <tr>
             
@@ -762,61 +553,78 @@ chat room.</p>
 
         <tbody>
         
-
             
 <tr class="deep-level-0">
-  
-      <td class="name"><code>targetUsername</code></td>
-  
+    
+        <td class="name"><code>roomId</code></td>
+    
 
-  <td class="type">
-  
-      
+    <td class="type">
+    
+        
 <span class="param-type">string</span>
 
 
-  
-  </td>
+    
+    </td>
 
-  
+    
 
-  
+    
 
-  <td class="description last"><p>username of the target <a href="global.html#_User">user</a></p></td>
+    <td class="description last"><p>document identifier generated by Firestore</p></td>
 </tr>
-
 
         
-
             
 <tr class="deep-level-0">
-  
-      <td class="name"><code>username</code></td>
-  
+    
+        <td class="name"><code>messages</code></td>
+    
 
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
+    <td class="type">
+    
+        
+<span class="param-type">list</span>
 
 
-  
-  </td>
+    
+    </td>
 
-  
+    
 
-  
+    
 
-  <td class="description last"><p>username of the current <a href="global.html#_User">user</a></p></td>
+    <td class="description last"><p>a list of <a href="global.html#_Message">messages</a> exchanged in this room</p></td>
 </tr>
 
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>participants</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">list</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>a list of usernames of <a href="global.html#_User">users</a> in this room</p></td>
+</tr>
 
         
         </tbody>
     </table>
 </div>
-
-
 
 
 
@@ -853,9 +661,9 @@ chat room.</p>
 
     
         <p class="tag-source">
-            <a href="User.js.html" class="button">View Source</a>
+            <a href="Types.js.html" class="button">View Source</a>
             <span>
-                <a href="User.js.html">User.js</a>, <a href="User.js.html#line80">line 80</a>
+                <a href="Types.js.html">Types.js</a>, <a href="Types.js.html#line17">line 17</a>
             </span>
         </p>
     
@@ -865,6 +673,26 @@ chat room.</p>
 
 
 
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object</span>
+
+
+    </span>
+
+<h4 class="name" id="_User">
+    <a class="href-link" href="#_User">#</a>
+    
+    <span class="code-name">
+        _User
+    </span>
+    
+</h4>
 
 
 
@@ -873,9 +701,190 @@ chat room.</p>
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userId</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the uid of the <a href="global.html#_GoogleUser">Google user</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>displayName</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the displayed name of the user</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>username</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the username of the user</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>roomIds</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">list</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>the list of <a href="global.html#_Room">rooms</a> the user belongs to</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>online</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>if the user is online</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Types.js.html" class="button">View Source</a>
+            <span>
+                <a href="Types.js.html">Types.js</a>, <a href="Types.js.html#line25">line 25</a>
+            </span>
+        </p>
+    
+</dl>
 
 
 
@@ -885,8 +894,6 @@ chat room.</p>
             
             </div>
         </div>
-    
-
     
 
     

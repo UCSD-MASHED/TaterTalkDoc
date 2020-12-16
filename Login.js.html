@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Jokes.html">Jokes</a></li><li><a href="Loading.html">Loading</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -97,7 +97,9 @@ import Loading from "./Loading";
 import Jokes from "./Jokes";
 
 /**
- * This is the Login Component
+ * This is the Login Component used to render the log in page and handle user
+ * actions such as log in with Google account.
+ * @hideconstructor
  */
 class Login extends React.Component {
   constructor(props) {
@@ -138,27 +140,9 @@ class Login extends React.Component {
     }
   }
 
-  loginWithGoogleUserAndRedirect(googleUser) {
-    this.getUser(googleUser)
-      .then((user) => {
-        // console.log(user);
-        if (user) {
-          // console.log("user exists, go to chat");
-          this.props.history.push("/chatRoom", { user });
-        } else {
-          // console.log("user does not exists, go to create user");
-          this.props.history.push("/createUser", { googleUser });
-        }
-      })
-      .catch((err) => {
-        // console.log(err);
-        toast.error(err);
-      });
-  }
-
   /**
-   * Handles Sign in button click, opens a pop up to google sign in page
-   * Once sign in is completed, we will get back the google user object.
+   * Handles Sign in button click, opens a pop up to Google sign in page
+   * Once sign in is completed, we will get back the Google user object.
    * We will use the uid to distinguish each user. If the user is new,
    * we will take them to CreateUser to ask them fill in a unique username,
    * else we will take them to Chat.
@@ -181,16 +165,13 @@ class Login extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-  }
+  } /* handleGoogleSignIn */
 
   /**
    * Get the user from googleUser
-   * @param {Object} googleUser - The google user to be found in database
-   * @param {string} googleUser.uid - The unique id of the google user
-   * @param {string} googleUser.displayName - The displayed name of the
-   *     google user
-   * @return {(user|undefined)} A user object if googleUser.uid is unique
-   *     in database; otherwise return undefined
+   * @param {_GoogleUser} googleUser - Google user to be found in database
+   * @return {_User|undefined} [user]{@link _User} if googleUser.uid is
+   *     unique in database; otherwise undefined
    */
   async getUser(googleUser) {
     var res = await firebase
@@ -200,13 +181,39 @@ class Login extends React.Component {
       .get()
       .then((doc) => doc.data());
     return res;
-  }
+  } /* getUser */
 
+  /**
+   * Loops through all {@link Jokes} images
+   */
   incrementImgState() {
     this.setState({
       imgState: this.state.imgState &lt; 4 ? this.state.imgState + 1 : 0,
     });
-  }
+  } /* incrementImgState */
+
+  /**
+   * Log in the Google user and redirect to the chat room page if the user exists,
+   * otherwise, redirect to the user creation page
+   * @param {_GoogleUser} googleUser - Google user to be logged in and redirected
+   */
+  loginWithGoogleUserAndRedirect(googleUser) {
+    this.getUser(googleUser)
+      .then((user) => {
+        // console.log(user);
+        if (user) {
+          // console.log("user exists, go to chat");
+          this.props.history.push("/chatRoom", { user });
+        } else {
+          // console.log("user does not exists, go to create user");
+          this.props.history.push("/createUser", { googleUser });
+        }
+      })
+      .catch((err) => {
+        // console.log(err);
+        toast.error(err);
+      });
+  } /* loginWithGoogleUserAndRedirect */
 
   render() {
     return this.state.loading ? (

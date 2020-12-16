@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Jokes.html">Jokes</a></li><li><a href="Loading.html">Loading</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -89,9 +89,12 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>ChatRoom<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>ChatRoom</h2>
         
-            <div class="class-description"><p>This is the ChatRoom Component</p></div>
+            <div class="class-description"><p>This is the ChatRoom Component used to render the chat room and handle user
+actions such as sending messages, searching for users to chat with, and starting
+new chats. A ChatRoom houses all of a users private chats, not just one chat
+with another user.</p></div>
         
     
 </header>
@@ -100,29 +103,8 @@
     <div class="container-overview">
     
         
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="ChatRoom">
-        <a class="href-link" href="#ChatRoom">#</a>
-        
-        <span class="code-name">
             
-                new ChatRoom<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
 
-    
-    
 
 
 
@@ -171,7 +153,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line14">line 14</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line18">line 18</a>
             </span>
         </p>
     
@@ -198,9 +180,6 @@
 
 
 
-                    </div>
-                </div>
-            </div>
         
     
     </div>
@@ -300,7 +279,7 @@
 
   
 
-  <td class="description last"><p>list of usernames for users in the room which may not exist</p></td>
+  <td class="description last"><p>list of usernames for <a href="global.html#_User">users</a> in the <a href="global.html#_Room">room</a> which may not exist</p></td>
 </tr>
 
 
@@ -348,7 +327,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line169">line 169</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line108">line 108</a>
             </span>
         </p>
     
@@ -379,7 +358,7 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>roomId - id of the chat room if found, otherwise null</p></div>
+    <div class='param-desc column is-7'><p>room id of the <a href="global.html#_Room">room</a> if found, otherwise null</p></div>
     
     
     <div class='column is-5 has-text-left'>
@@ -480,7 +459,7 @@
 
   
 
-  <td class="description last"><p>username of the current user</p></td>
+  <td class="description last"><p>username of the current <a href="global.html#_User">user</a></p></td>
 </tr>
 
 
@@ -505,7 +484,7 @@
 
   
 
-  <td class="description last"><p>id of the chat room</p></td>
+  <td class="description last"><p>id of the <a href="global.html#_Room">room</a></p></td>
 </tr>
 
 
@@ -553,7 +532,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line150">line 150</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line132">line 132</a>
             </span>
         </p>
     
@@ -584,7 +563,7 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>exist - true or false if the user is in the chat room</p></div>
+    <div class='param-desc column is-7'><p>true if the current <a href="global.html#_User">user</a> is in the <a href="global.html#_Room">room</a>, else false</p></div>
     
     
     <div class='column is-5 has-text-left'>
@@ -610,8 +589,8 @@
 
 
     
-    <h4 class="name" id="getInitMessages">
-        <a class="href-link" href="#getInitMessages">#</a>
+    <h4 class="name" id="enterRoom">
+        <a class="href-link" href="#enterRoom">#</a>
         
             
                 <span class='tag'>async</span>
@@ -619,7 +598,7 @@
         
         <span class="code-name">
             
-                getInitMessages<span class="signature">(roomId)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
+                enterRoom<span class="signature">(roomId, roomName)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -628,7 +607,7 @@
     
     
     <div class="description">
-        <p>Fetch the messages of the chat room</p>
+        <p>Enter the chat room with another user</p>
     </div>
     
 
@@ -682,7 +661,32 @@
 
   
 
-  <td class="description last"><p>id of the chat room</p></td>
+  <td class="description last"><p>id of the <a href="global.html#_Room">room</a></p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>roomName</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>displayed name of the other <a href="global.html#_User">user</a></p></td>
 </tr>
 
 
@@ -730,7 +734,7 @@
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line228">line 228</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line151">line 151</a>
             </span>
         </p>
     
@@ -753,30 +757,157 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
+
+
+
+</div>
             
-                    
+                <div class="member">
 
-<div class="columns">
+
     
-    <div class='param-desc column is-7'><p>messages - list of strings of messages found</p></div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
+    <h4 class="name" id="getInitMessages">
+        <a class="href-link" href="#getInitMessages">#</a>
         
-<span class="param-type">Array.&lt;string></span>
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                getInitMessages<span class="signature">(roomId)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
 
-
+    
+    
+    <div class="description">
+        <p>Fetch the list of <a href="global.html#_Message">messages</a> of the chat room</p>
     </div>
     
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>roomId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>id of the <a href="global.html#_Room">room</a></p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
-                
-        </div>
-    </div>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ChatRoom.js.html" class="button">View Source</a>
+            <span>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line164">line 164</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -805,8 +936,7 @@
     
     
     <div class="description">
-        <p>Create a listener for a chat room to fetch messages upon updates to
-the database</p>
+        <p>Append a new <a href="global.html#_Message">message</a> sent by the current user to the list of messages in a room</p>
     </div>
     
 
@@ -860,7 +990,7 @@ the database</p>
 
   
 
-  <td class="description last"><p>id of the chat room</p></td>
+  <td class="description last"><p>id of the <a href="global.html#_Room">room</a></p></td>
 </tr>
 
 
@@ -908,7 +1038,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line254">line 254</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line189">line 189</a>
             </span>
         </p>
     
@@ -949,7 +1079,7 @@ the database</p>
         
         <span class="code-name">
             
-                getUsers<span class="signature">(username)</span><span class="type-signature"> &rarr; {Array.&lt;user>}</span>
+                getUsers<span class="signature">(username)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="global.html#_User">_User</a>>}</span>
             
         </span>
     </h4>
@@ -1012,7 +1142,7 @@ the database</p>
 
   
 
-  <td class="description last"><p>The username of the current user</p></td>
+  <td class="description last"><p>username of the current <a href="global.html#_User">user</a></p></td>
 </tr>
 
 
@@ -1060,7 +1190,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line103">line 103</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line219">line 219</a>
             </span>
         </p>
     
@@ -1091,13 +1221,13 @@ the database</p>
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>list of the users excluding the current user</p></div>
+    <div class='param-desc column is-7'><p>list of the users excluding the current <a href="global.html#_User">user</a></p></div>
     
     
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type">Array.&lt;user></span>
+<span class="param-type">Array.&lt;<a href="global.html#_User">_User</a>></span>
 
 
     </div>
@@ -1107,6 +1237,450 @@ the database</p>
                 
         </div>
     </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="handleChangeInput">
+        <a class="href-link" href="#handleChangeInput">#</a>
+        
+        <span class="code-name">
+            
+                handleChangeInput<span class="signature">(event)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Handles message input change, updates state accordingly.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>event</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>an Event object</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ChatRoom.js.html" class="button">View Source</a>
+            <span>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line69">line 69</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="handleChangeSearch">
+        <a class="href-link" href="#handleChangeSearch">#</a>
+        
+        <span class="code-name">
+            
+                handleChangeSearch<span class="signature">(event)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Handles user search input change, triggers <a href="ChatRoom.html#searchPrefix">ChatRoom#searchPrefix</a> search on input change</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>event</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>an Event object</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ChatRoom.js.html" class="button">View Source</a>
+            <span>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line78">line 78</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="handleSubmit">
+        <a class="href-link" href="#handleSubmit">#</a>
+        
+        <span class="code-name">
+            
+                handleSubmit<span class="signature">(event)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Handles message submit, triggers <a href="ChatRoom.html#sendMessage">ChatRoom#sendMessage</a></p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>event</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>an Event object</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ChatRoom.js.html" class="button">View Source</a>
+            <span>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line93">line 93</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1182,7 +1756,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line291">line 291</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line299">line 299</a>
             </span>
         </p>
     
@@ -1279,7 +1853,7 @@ the database</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line282">line 282</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line311">line 311</a>
             </span>
         </p>
     
@@ -1320,7 +1894,7 @@ the database</p>
         
         <span class="code-name">
             
-                searchPrefix<span class="signature">(username, keyword)</span><span class="type-signature"> &rarr; {Array.&lt;user>}</span>
+                searchPrefix<span class="signature">(username, keyword)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="global.html#_User">_User</a>>}</span>
             
         </span>
     </h4>
@@ -1384,7 +1958,7 @@ match of the input keyword</p>
 
   
 
-  <td class="description last"><p>username of the current user</p></td>
+  <td class="description last"><p>username of the current <a href="global.html#_User">user</a></p></td>
 </tr>
 
 
@@ -1457,7 +2031,7 @@ match of the input keyword</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line126">line 126</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line242">line 242</a>
             </span>
         </p>
     
@@ -1494,7 +2068,7 @@ match of the input keyword</p>
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type">Array.&lt;user></span>
+<span class="param-type">Array.&lt;<a href="global.html#_User">_User</a>></span>
 
 
     </div>
@@ -1532,7 +2106,7 @@ match of the input keyword</p>
     
     
     <div class="description">
-        <p>Update user timestamp and append message to room of messages.</p>
+        <p>Update user timestamp and append <a href="global.html#_Message">message</a> to room of messages.</p>
     </div>
     
 
@@ -1611,7 +2185,7 @@ match of the input keyword</p>
 
   
 
-  <td class="description last"><p>id of the chat room</p></td>
+  <td class="description last"><p>id of the <a href="global.html#_Room">room</a></p></td>
 </tr>
 
 
@@ -1636,7 +2210,7 @@ match of the input keyword</p>
 
   
 
-  <td class="description last"><p>username of the current user</p></td>
+  <td class="description last"><p>username of the current <a href="global.html#_User">user</a></p></td>
 </tr>
 
 
@@ -1684,7 +2258,7 @@ match of the input keyword</p>
         <p class="tag-source">
             <a href="ChatRoom.js.html" class="button">View Source</a>
             <span>
-                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line193">line 193</a>
+                <a href="ChatRoom.js.html">ChatRoom.js</a>, <a href="ChatRoom.js.html#line266">line 266</a>
             </span>
         </p>
     

@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ChatInput.html">ChatInput</a></li><li><a href="ChatMessage.html">ChatMessage</a></li><li><a href="ChatRoom.html">ChatRoom</a></li><li><a href="CreateUser.html">CreateUser</a></li><li><a href="Jokes.html">Jokes</a></li><li><a href="Loading.html">Loading</a></li><li><a href="Login.html">Login</a></li><li><a href="LogOutButton.html">LogOutButton</a></li><li><a href="People.html">People</a></li><li><a href="User.html">User</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -89,9 +89,11 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>CreateUser<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>CreateUser</h2>
         
-            <div class="class-description"><p>This is the CreateUser Component</p></div>
+            <div class="class-description"><p>This is the CreateUser Component used to reader the user creation page
+and handle user actions such as entering the username and creating a new user
+in the user creation page.</p></div>
         
     
 </header>
@@ -100,29 +102,8 @@
     <div class="container-overview">
     
         
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="CreateUser">
-        <a class="href-link" href="#CreateUser">#</a>
-        
-        <span class="code-name">
             
-                new CreateUser<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
 
-    
-    
 
 
 
@@ -171,7 +152,7 @@
         <p class="tag-source">
             <a href="CreateUser.js.html" class="button">View Source</a>
             <span>
-                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line11">line 11</a>
+                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line14">line 14</a>
             </span>
         </p>
     
@@ -198,9 +179,6 @@
 
 
 
-                    </div>
-                </div>
-            </div>
         
     
     </div>
@@ -228,104 +206,6 @@
 
 
     
-    <h4 class="name" id="componentDidMount">
-        <a class="href-link" href="#componentDidMount">#</a>
-        
-        <span class="code-name">
-            
-                componentDidMount<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Go back to sign-in page if not signed in
-(This can happen when the user types in the URL (/createUser) directly)</p>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="CreateUser.js.html" class="button">View Source</a>
-            <span>
-                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line90">line 90</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
     <h4 class="name" id="createUser">
         <a class="href-link" href="#createUser">#</a>
         
@@ -335,7 +215,7 @@
         
         <span class="code-name">
             
-                createUser<span class="signature">(googleUser, username)</span><span class="type-signature"> &rarr; {user|null}</span>
+                createUser<span class="signature">(googleUser, username)</span><span class="type-signature"> &rarr; {<a href="global.html#_User">_User</a>|null}</span>
             
         </span>
     </h4>
@@ -388,7 +268,7 @@
   <td class="type">
   
       
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#_GoogleUser">_GoogleUser</a></span>
 
 
   
@@ -398,58 +278,8 @@
 
   
 
-  <td class="description last"><p>The google user to be found in database</p></td>
+  <td class="description last"><p>Google user to be found in database</p></td>
 </tr>
-
-  
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>uid</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>The unique id of the google user</p></td>
-</tr>
-
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>displayName</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>The displayed name of the
-google user</p></td>
-</tr>
-
-  
 
 
         
@@ -473,7 +303,7 @@ google user</p></td>
 
   
 
-  <td class="description last"><p>The username of the user</p></td>
+  <td class="description last"><p>username of the <a href="global.html#_User">user</a></p></td>
 </tr>
 
 
@@ -521,7 +351,7 @@ google user</p></td>
         <p class="tag-source">
             <a href="CreateUser.js.html" class="button">View Source</a>
             <span>
-                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line122">line 122</a>
+                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line103">line 103</a>
             </span>
         </p>
     
@@ -552,14 +382,14 @@ google user</p></td>
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>The newly created user if created successfully;
+    <div class='param-desc column is-7'><p>newly created <a href="global.html#_User">user</a> if created successfully;
 otherwise null</p></div>
     
     
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type">user</span>
+<span class="param-type"><a href="global.html#_User">_User</a></span>
 |
 
 <span class="param-type">null</span>
@@ -587,7 +417,7 @@ otherwise null</p></div>
         
         <span class="code-name">
             
-                handleChange<span class="signature">()</span><span class="type-signature"></span>
+                handleChange<span class="signature">(event)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -607,6 +437,57 @@ otherwise null</p></div>
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>event</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>an Event object</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -647,7 +528,7 @@ otherwise null</p></div>
         <p class="tag-source">
             <a href="CreateUser.js.html" class="button">View Source</a>
             <span>
-                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line40">line 40</a>
+                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line50">line 50</a>
             </span>
         </p>
     
@@ -750,7 +631,7 @@ else it will display an error toast and remain in the page.</p>
 
   
 
-  <td class="description last"><p>An Event Object</p></td>
+  <td class="description last"><p>an Event object</p></td>
 </tr>
 
 
@@ -798,7 +679,7 @@ else it will display an error toast and remain in the page.</p>
         <p class="tag-source">
             <a href="CreateUser.js.html" class="button">View Source</a>
             <span>
-                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line51">line 51</a>
+                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line61">line 61</a>
             </span>
         </p>
     
@@ -902,7 +783,7 @@ else it will display an error toast and remain in the page.</p>
 
   
 
-  <td class="description last"><p>The username to be checked in database</p></td>
+  <td class="description last"><p>username to be checked in database</p></td>
 </tr>
 
 
@@ -950,7 +831,7 @@ else it will display an error toast and remain in the page.</p>
         <p class="tag-source">
             <a href="CreateUser.js.html" class="button">View Source</a>
             <span>
-                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line101">line 101</a>
+                <a href="CreateUser.js.html">CreateUser.js</a>, <a href="CreateUser.js.html#line133">line 133</a>
             </span>
         </p>
     
@@ -981,7 +862,7 @@ else it will display an error toast and remain in the page.</p>
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>True if username is unique; otherwise False</p></div>
+    <div class='param-desc column is-7'><p>true if username is unique; otherwise False</p></div>
     
     
     <div class='column is-5 has-text-left'>

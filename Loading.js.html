@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ChatInput.js</title>
+  <title> Loading.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>ChatInput.js</h1>
+                    <h1>Loading.js</h1>
                 </header>
                 
 
@@ -90,79 +90,25 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import { ReactComponent as EnterButton } from "../enter.svg";
-import { addEmoji, toggleEmojiPicker } from "../utils/emoji.js";
-import EmojiPicker from "../utils/emoji.js";
-import data from "emoji-mart/data/apple.json";
 
 /**
- * This is the ChatInput Component used to render the chat input box.
+ * This is the Loading Component used to display the loading screen during
+ * page transitions.
  * @hideconstructor
  */
-class ChatInput extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.inputRef = React.createRef();
-    this.addEmoji = addEmoji.bind(this);
-    this.toggleEmojiPicker = toggleEmojiPicker.bind(this);
-    this.state = {
-      showEmojiPicker: false,
-    };
-  }
-
+class Loading extends React.Component {
   render() {
     return (
-      &lt;div className="chat-input">
-        {this.state.showEmojiPicker &amp;&amp; (
-          &lt;EmojiPicker
-            onClickOutside={() => this.toggleEmojiPicker()}
-            title={"Pick your emoji"}
-            emoji={"point_up"}
-            data={data}
-            style={{ position: "absolute", bottom: "2.7rem", right: "0" }}
-            set="apple"
-            onSelect={this.addEmoji}
-            showPreview={false}
-            showSkinTones={false}
-          />
-        )}
-        &lt;form onSubmit={this.props.handleSubmit}>
-          &lt;div className="input-group chat-box">
-            &lt;input
-              className="form-control"
-              type="text"
-              value={this.props.message}
-              onChange={this.props.handleChange}
-              placeholder="Potatoes can't talk... but you can!"
-              ref={this.inputRef}
-            />
-            &lt;div className="input-group-append">
-              &lt;button
-                type="button"
-                className="btn btn-warning ignore-react-onclickoutside"
-                id="show-emoji-yes"
-                onClick={() => this.toggleEmojiPicker()}
-              >
-                {"😃"}
-              &lt;/button>
-              &lt;button
-                disabled={!this.props.message}
-                type="submit"
-                className="btn btn-success btn-block"
-                title="Send"
-              >
-                &lt;EnterButton />
-              &lt;/button>
-            &lt;/div>
-          &lt;/div>
-        &lt;/form>
+      &lt;div className="auth-wrapper">
+        &lt;div className="auth-inner">
+          &lt;h1>Loading...&lt;/h1>
+        &lt;/div>
       &lt;/div>
     );
   }
 }
 
-export default ChatInput;
+export default Loading;
 </code></pre>
         </article>
     </section>
