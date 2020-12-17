@@ -109,44 +109,143 @@
 <a href="https://codeclimate.com/github/UCSD-MASHED/chatapp/test_coverage"><img src="https://api.codeclimate.com/v1/badges/3495656c5160e368951d/test_coverage" alt="Test Coverage"></a>
 <a href="https://github.com/UCSD-MASHED/chatapp"><img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" alt="tested with jest"></a>
 <a href="https://dashboard.cypress.io/projects/xntes5/runs"><img src="https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/xntes5&amp;style=flat&amp;logo=cypress" alt="TaterTalk Cypress Test"></a></p>
-<h1>Getting Started with Create React App</h1>
-<p>This project was bootstrapped with <a href="https://github.com/facebook/create-react-app">Create React App</a>.</p>
-<h2>Available Scripts</h2>
-<p>In the project directory, you can run:</p>
+<ul>
+<li><a href="#tatertalk">TaterTalk</a>
+<ul>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#get-started">Get Started</a>
+<ul>
+<li><a href="#steps-you-should-take">Steps you should take</a></li>
+<li><a href="#resources-for-next-steps">Resources for next steps</a></li>
+</ul>
+</li>
+<li><a href="#configurations">Configurations</a>
+<ul>
+<li><a href="#environment-files">Environment files</a>
+<ul>
+<li><a href="#firebaserc"><code>.firebaserc</code></a></li>
+<li><a href="#envdev"><code>.env.dev</code></a></li>
+<li><a href="#serviceaccountjson"><code>serviceAccount.json</code></a></li>
+</ul>
+</li>
+<li><a href="#workflow-setup">Workflow Setup</a></li>
+</ul>
+</li>
+<li><a href="#scripts">Scripts</a>
+<ul>
+<li><a href="#yarn-start"><code>yarn start</code></a></li>
+<li><a href="#yarn-test"><code>yarn test</code></a></li>
+<li><a href="#yarn-run-cyrun"><code>yarn run cy:run</code></a></li>
+<li><a href="#yarn-run-cyopen"><code>yarn run cy:open</code></a></li>
+</ul>
+</li>
+<li><a href="#code-and-jsdoc-documentation">Code and JSDoc Documentation</a></li>
+<li><a href="#testing">Testing</a>
+<ul>
+<li><a href="#jest">Jest</a></li>
+<li><a href="#cypress">Cypress</a></li>
+<li><a href="#code-coverage">Code Coverage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1><a href="https://twotenchatapp.web.app/">TaterTalk</a></h1>
+<p>This is a chat web application that allows users to register/login with Google and provides 1 on 1 private chatting functionality.</p>
+<h2>Architecture</h2>
+<p><code>TODO</code></p>
+<p>This project was bootstrapped with <a href="https://github.com/facebook/create-react-app">Create React App</a> and utilizes <a href="https://firebase.google.com/">Firebase</a>, more specifically, it relies on Firebase Authentication, Firestore and Hosting.</p>
+<h2>Get Started</h2>
+<p>Welcome aboard! Below are the steps you need to take to get up and running, as well as relevant resources to consult.</p>
+<h3>Steps you should take</h3>
+<ol>
+<li>Install <a href="https://nodejs.dev/learn/how-to-install-nodejs">node</a>.</li>
+<li>Install <a href="https://classic.yarnpkg.com/en/docs/install/">yarn</a>.</li>
+<li>Clone this repository.</li>
+<li>If you are part of the team, we should have provided you with two files: <a href="#envdev"><code>.env.dev</code></a> and <a href="#serviceaccountjson"><code>serviceAccount.json</code></a> . Add both of these files to the root level of the repository. If you are not part of the team, please follow <a href="#configurations">Configurations</a> section on how to configure these files.</li>
+<li>Run <code>yarn install</code> to install our project's dependencies.</li>
+<li>Start the local server by doing <code>yarn start</code> and explore!</li>
+</ol>
+<p>You're all set! You can visit the <a href="#Scripts">Scripts</a> section to learn more about other useful commands if you are interested.</p>
+<h3>Resources for next steps</h3>
+<p><code>TODO</code></p>
+<h2>Configurations</h2>
+<p>If you are not part of the team and would like to extend this app on your own, you should first create a Firebase app <a href="https://firebase.google.com/">here</a>. It's worth mentioning that we created two Firebase apps for our <code>main</code> and <code>dev</code> branches respectively. If you don't need it, you only need to create one Firebase app.</p>
+<h3>Environment files</h3>
+<p>In order to run this app in full capacity, you will also need to add your own configuration files as explained below.</p>
+<h4><code>.firebaserc</code></h4>
+<p>This is the Firebase configuration file which specifies the corresponding Firebase project id.</p>
+<p>Here is what it looks like:</p>
+<p>Since we have two branches <code>main</code> and <code>dev</code> for production and development environments in our GitHub repository, we also created two apps on Firebase console and linked them to <code>prod</code> and <code>dev</code> config respectively.</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;projects&quot;: {
+    &quot;default&quot;: &quot;twotenchatapp&quot;,
+    &quot;prod&quot;: &quot;twotenchatapp&quot;,
+    &quot;dev&quot;: &quot;twotenchatapp-beta-a41e8&quot;
+  }
+}
+</code></pre>
+<p>After creating your own Firebase app, you have to change the corresponding project id in this file. If you are only creating one Firebase app, you can remove <code>prod</code> and <code>dev</code> fields and only keep <code>default</code> field.</p>
+<h4><code>.env.dev</code></h4>
+<p>This is our local environment credential file that stores the necessary ENV variables.</p>
+<p>This is what it should look like:</p>
+<pre class="prettyprint source"><code>REACT_APP_APIKEY=...
+REACT_APP_AUTHDOMAIN=...
+REACT_APP_DATABASEURL=...
+REACT_APP_PROJECTID=...
+REACT_APP_STORAGEBUCKET=...
+REACT_APP_MESSAGINGSENDERID=...
+REACT_APP_APPID=1:...
+
+CYPRESS_APIKEY=...
+CYPRESS_AUTHDOMAIN=...
+CYPRESS_DATABASEURL=...
+CYPRESS_PROJECTID=...
+CYPRESS_STORAGEBUCKET=...
+CYPRESS_MESSAGINGSENDERID=...
+CYPRESS_APPID=1:...
+CYPRESS_TEST_UID=...
+</code></pre>
+<p><code>*_APIKEY</code>, <code>*_AUTHDOMAIN</code>, <code>*_DATABASEURL</code>, <code>*_PROJECTID</code>, <code>*_STORAGEBUCKET</code>, <code>*_MESSAGINGSENDERID</code> and <code>*_APPID</code> are provided by the Firebase project you created. They are used to <a href="https://firebase.google.com/docs/web/setup#add-sdks-initialize">initialize the Firebase app</a> using the Firebase SDK. You can read more about it in <a href="https://support.google.com/firebase/answer/7015592">here</a> as well.</p>
+<p>We prepend <code>REACT_APP_</code> to the environment variables introduced above so that they are imported by CRA automatically.</p>
+<p>We also prepend <code>CYPRESS_</code> to the same environment variables so that they are imported by Cypress in test runs. We need them so that we can communicate with Firebase in our End to End environment.</p>
+<p><code>CYPRESS_TEST_UID</code> is needed for <code>cypress-firebase</code> so that it can log in as a test user through Firebase Authentication. See more details <a href="https://github.com/prescottprue/cypress-firebase#cylogin">here</a>.</p>
+<h4><code>serviceAccount.json</code></h4>
+<p>This is a JSON configuration file that was generated in Firebase. You can follow this <a href="https://firebase.google.com/docs/admin/setup#initialize-sdk">link</a> for instructions. We need this file so that our third-party plugin <a href="https://github.com/prescottprue/cypress-firebase">cypress-firebase</a> can utilize the firebase-admin SDK to test the Firebase project.</p>
+<h3>Workflow Setup</h3>
+<p>We have several GitHub Actions <a href=".github/workflows">workflows</a> configured in our repo. These workflows build, run, test, and deploy our project. In addition, they are configured to preview and deploy pull requests and merges into our dev branch to a second Firebase application - a &quot;beta&quot; app that we use as our development application. In addition to our workflows deploying to this beta app, they also deploy our JSDoc documentation, Jest coverage report, and Code climate report. Because our workflows are configured to work with this beta app and other resources, this means that our workflow files will not work for your project out-of-the-box.</p>
+<p>If you would like to use our workflow setup as a template, you will need to set up Jest coverage, Code Climate, JSDoc, and a secondary &quot;beta&quot; app for your porject. For more information on how to do this, see the relevant sections and links at the end of this document.</p>
+<p>If you would not like to use our workflow setup or would like to adapt it, be sure to update these files according to your desired workflows.</p>
+<p>After setting up the environment files and your own workflow files, you should install all the project dependencies by doing <code>yarn install</code>. Once the installation is done, you should be able to utilize the commands in the Scripts section below.</p>
+<h2>Scripts</h2>
 <h3><code>yarn start</code></h3>
-<p>Runs the app in the development mode.<br>
-Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
-<p>The page will reload if you make edits.<br>
+<p>Runs the app on your local machine.
+Open http://localhost:3000 to view it in the browser.</p>
+<p>The page will reload if you make edits.
 You will also see any lint errors in the console.</p>
 <h3><code>yarn test</code></h3>
-<p>Launches the test runner in the interactive watch mode.<br>
+<p>Launches the unit test runner in the interactive watch mode.<br>
 See the section about <a href="https://facebook.github.io/create-react-app/docs/running-tests">running tests</a> for more information.</p>
-<h3><code>yarn build</code></h3>
-<p>Builds the app for production to the <code>build</code> folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.</p>
-<p>The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!</p>
-<p>See the section about <a href="https://facebook.github.io/create-react-app/docs/deployment">deployment</a> for more information.</p>
-<h3><code>yarn eject</code></h3>
-<p><strong>Note: this is a one-way operation. Once you <code>eject</code>, you can’t go back!</strong></p>
-<p>If you aren’t satisfied with the build tool and configuration choices, you can <code>eject</code> at any time. This command will remove the single build dependency from your project.</p>
-<p>Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except <code>eject</code> will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.</p>
-<p>You don’t have to ever use <code>eject</code>. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.</p>
-<h2>Learn More</h2>
-<p>You can learn more in the <a href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App documentation</a>.</p>
-<p>To learn React, check out the <a href="https://reactjs.org/">React documentation</a>.</p>
-<h3>Code Splitting</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/code-splitting">https://facebook.github.io/create-react-app/docs/code-splitting</a></p>
-<h3>Analyzing the Bundle Size</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size">https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size</a></p>
-<h3>Making a Progressive Web App</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app">https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app</a></p>
-<h3>Advanced Configuration</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/advanced-configuration">https://facebook.github.io/create-react-app/docs/advanced-configuration</a></p>
-<h3>Deployment</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/deployment">https://facebook.github.io/create-react-app/docs/deployment</a></p>
-<h3><code>yarn build</code> fails to minify</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify">https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify</a></p></article>
+<h3><code>yarn run cy:run</code></h3>
+<p>Launches the Cypress test runner in command-line mode. See more details <a href="https://docs.cypress.io/guides/guides/command-line.html#How-to-run-commands">here</a>.</p>
+<h3><code>yarn run cy:open</code></h3>
+<p>Launches the Cypress GUI test runner. See more details <a href="https://docs.cypress.io/guides/getting-started/installing-cypress.html#Opening-Cypress">here</a>.</p>
+<h2>Code and JSDoc Documentation</h2>
+<p>If you are interested in our implementation, we have a JSDoc document website hosted <a href="https://ucsd-mashed.github.io/TaterTalkDoc/">here</a> that documents all of our code for this project.</p>
+<p>Learn how to configure JSDoc <a href="https://jsdoc.app/about-configuring-jsdoc.html">here</a>.</p>
+<p>For reference, you can look at our <code>jsdoc.json</code> in the root directory for our own configuration of JSDoc.</p>
+<h2>Testing</h2>
+<h3>Jest</h3>
+<p>We use <a href="https://jestjs.io/docs/en/tutorial-react">Jest</a>, combined with <a href="https://testing-library.com/docs/react-testing-library/example-intro/">react-testing-library</a> for unit testing.</p>
+<p>The goal here is to have at least one test case per each unit (function) so that we can be confident that all functions should behave as expected.</p>
+<h3>Cypress</h3>
+<p>For our E2E tests, we decided to go with <a href="https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell">Cypress</a> because it's well-documented and provides good support for asynchronous tests and is easy to setup.</p>
+<p>Learn how to configure Cypress <a href="https://docs.cypress.io/guides/references/configuration.html">here</a>.</p>
+<p>It's worth mentioning that since E2E tests require talking to the actual backend server (in our case, this is Firebase), we also need to setup environment variables so that Cypress can test Firebase related features. The detailed configuration is covered <a href="#envdev">here</a>.</p>
+<p>For reference, you can look at our <code>cypress.json</code> in the root directory for our own configuration of Cypress.</p>
+<h3>Code Coverage</h3>
+<p>We combined both Jest and Cypress test coverages so that it truly reflects our comprehensive code coverage. If interested, please take a look at our <a href=".github/workflows/test_coverage.yml">test coverage workflow</a>.</p>
+<p>The combined coverage report is also hosted via GitHub Pages <a href="https://ucsd-mashed.github.io/TaterTalkCoverage/">here</a>.</p></article>
     </section>
 
 
