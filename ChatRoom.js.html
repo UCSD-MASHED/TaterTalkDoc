@@ -439,17 +439,24 @@ class ChatRoom extends React.Component {
               &lt;/h3>
             &lt;/div>
             &lt;div className="chat-messages">
-              {this.state.messages &amp;&amp;
+              {this.state.roomId === null ? (
+                &lt;div className="empty-chatroom">
+                  &lt;h2> Don't be a couch potato... &lt;/h2>
+                  &lt;h2> Click on a user to start a tateriffic talk! &lt;/h2>
+                &lt;/div>
+              ) : (
                 this.state.messages.map((msg, i) => (
                   &lt;ChatMessage
                     key={i}
                     message={msg}
                     username={this.state.user.username}
                   />
-                ))}
+                ))
+              )}
               &lt;span ref={this.dummy}>&lt;/span>
             &lt;/div>
             &lt;ChatInput
+              disable={this.state.roomId === null}
               message={this.state.message}
               handleChange={this.handleChangeInput}
               handleSubmit={this.handleSubmit}
