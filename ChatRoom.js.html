@@ -444,14 +444,14 @@ class ChatRoom extends React.Component {
                     &lt;h2> Click on a user to start a tateriffic talk! &lt;/h2>
                   &lt;/div>
                 ) : (
-                    this.state.messages.map((msg, i) => (
-                      &lt;ChatMessage
-                        key={i}
-                        message={msg}
-                        username={this.state.user.username}
-                      />
-                    ))
-                  )}
+                  this.state.messages.map((msg, i) => (
+                    &lt;ChatMessage
+                      key={i}
+                      message={msg}
+                      username={this.state.user.username}
+                    />
+                  ))
+                )}
                 &lt;span ref={this.dummy}>&lt;/span>
               &lt;/div>
               &lt;ChatInput
@@ -467,7 +467,8 @@ class ChatRoom extends React.Component {
   }
 }
 
-export default withRouter(ChatRoom);</code></pre>
+export default withRouter(ChatRoom);
+</code></pre>
         </article>
     </section>
 
