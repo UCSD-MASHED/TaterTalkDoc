@@ -121,7 +121,6 @@ class ChatRoom extends React.Component {
       users: [],
       keyword: "",
       roomName: "Chat Room",
-      roomIsEmpty: true,
       roomId: null,
       loading: true,
     };
@@ -242,7 +241,6 @@ class ChatRoom extends React.Component {
    */
   async enterRoom(roomId, roomName) {
     this.setState({
-      roomIsEmpty: false,
       roomId: roomId,
       roomName: roomName,
     });
@@ -441,7 +439,7 @@ class ChatRoom extends React.Component {
               &lt;/h3>
             &lt;/div>
             &lt;div className="chat-messages">
-              {this.state.roomIsEmpty ? (
+              {this.state.roomId ? (
                 &lt;div className="empty-chatroom">
                   &lt;h2> Don't be a couch potato... &lt;/h2>
                   &lt;h2> Click on a user to start a tateriffic talk! &lt;/h2>
@@ -458,7 +456,7 @@ class ChatRoom extends React.Component {
               &lt;span ref={this.dummy}>&lt;/span>
             &lt;/div>
             &lt;ChatInput
-              disable={this.state.roomIsEmpty}
+              disable={this.state.roomId}
               message={this.state.message}
               handleChange={this.handleChangeInput}
               handleSubmit={this.handleSubmit}
