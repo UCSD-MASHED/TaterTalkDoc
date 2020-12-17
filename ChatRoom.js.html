@@ -437,38 +437,37 @@ class ChatRoom extends React.Component {
               &lt;h3 className="truncate" data-testid="room-name">
                 {this.state.roomName}
               &lt;/h3>
+              &lt;div className="chat-messages">
+                {this.state.roomName === "Chat Room" ? (
+                  &lt;div className="empty-chatroom">
+                    &lt;h2> Don't be a couch potato... &lt;/h2>
+                    &lt;h2> Click on a user to start a tateriffic talk! &lt;/h2>
+                  &lt;/div>
+                ) : (
+                    this.state.messages.map((msg, i) => (
+                      &lt;ChatMessage
+                        key={i}
+                        message={msg}
+                        username={this.state.user.username}
+                      />
+                    ))
+                  )}
+                &lt;span ref={this.dummy}>&lt;/span>
+              &lt;/div>
+              &lt;ChatInput
+                message={this.state.message}
+                handleChange={this.handleChangeInput}
+                handleSubmit={this.handleSubmit}
+              />
             &lt;/div>
           &lt;/div>
-          &lt;div className="chat-messages">
-            {this.state.messages.length > 0 ? (
-              this.state.messages.map((msg, i) => (
-                &lt;ChatMessage
-                  key={i}
-                  message={msg}
-                  username={this.state.user.username}
-                />
-              ))
-            ) : (
-              &lt;div className="empty-chatroom">
-                &lt;h2> Don't be a couch potato... &lt;/h2>
-                &lt;h2> Click on a user to start a tateriffic talk! &lt;/h2>
-              &lt;/div>
-            )}
-            &lt;span ref={this.dummy}>&lt;/span>
-          &lt;/div>
-          &lt;ChatInput
-            message={this.state.message}
-            handleChange={this.handleChangeInput}
-            handleSubmit={this.handleSubmit}
-          />
         &lt;/div>
       &lt;/div>
     );
   }
 }
 
-export default withRouter(ChatRoom);
-</code></pre>
+export default withRouter(ChatRoom);</code></pre>
         </article>
     </section>
 
