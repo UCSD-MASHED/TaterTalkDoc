@@ -406,6 +406,8 @@ class ChatRoom extends React.Component {
   } /* scrollToBottom */
 
   render() {
+    const roomIsEmpty = (this.state.roomId === null);
+
     return this.state.loading ? (
       &lt;Loading />
     ) : (
@@ -439,7 +441,7 @@ class ChatRoom extends React.Component {
               &lt;/h3>
             &lt;/div>
             &lt;div className="chat-messages">
-              {this.state.roomId === null ? (
+              {roomIsEmpty ? (
                 &lt;div className="empty-chatroom">
                   &lt;h2> Don't be a couch potato... &lt;/h2>
                   &lt;h2> Click on a user to start a tateriffic talk! &lt;/h2>
@@ -456,7 +458,7 @@ class ChatRoom extends React.Component {
               &lt;span ref={this.dummy}>&lt;/span>
             &lt;/div>
             &lt;ChatInput
-              disable={this.state.roomId === null}
+              disable={roomIsEmpty}
               message={this.state.message}
               handleChange={this.handleChangeInput}
               handleSubmit={this.handleSubmit}
