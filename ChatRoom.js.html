@@ -123,6 +123,7 @@ class ChatRoom extends React.Component {
       roomName: "Chat Room",
       roomId: null,
       loading: true,
+      listener: null,
     };
     this.dummy = createRef();
     this.handleChangeInput = this.handleChangeInput.bind(this);
@@ -142,6 +143,9 @@ class ChatRoom extends React.Component {
    * not accept messages.
    */
   async componentDidMount() {
+    if (this.state.listener) {
+      this.state.listener();
+    }
     if (!this.state.user) {
       this.props.history.replace("/");
     } else {
@@ -289,7 +293,7 @@ class ChatRoom extends React.Component {
     if (!roomId) {
       return;
     }
-    await firebase
+    this.state.listener = await firebase
       .firestore()
       .collection("rooms")
       .doc(roomId)
@@ -410,62 +414,62 @@ class ChatRoom extends React.Component {
     return this.state.loading ? (
       &lt;Loading />
     ) : (
-      &lt;div style={{ height: "100%" }}>
-        &lt;div className="chat-header">
-          &lt;span className="chat-title">
-            &lt;img
-              className="tatertalk-chatroom"
-              alt="icon"
-              src={process.env.PUBLIC_URL + "/tatertalk_icon.png"}
-            />
-            &lt;span>TaterTalk&lt;/span>
-            &lt;span className="logout-btn">
-              &lt;LogOutButton logout={this.logout} />
+        &lt;div style={{ height: "100%" }}>
+          &lt;div className="chat-header">
+            &lt;span className="chat-title">
+              &lt;img
+                className="tatertalk-chatroom"
+                alt="icon"
+                src={process.env.PUBLIC_URL + "/tatertalk_icon.png"}
+              />
+              &lt;span>TaterTalk&lt;/span>
+              &lt;span className="logout-btn">
+                &lt;LogOutButton logout={this.logout} />
+              &lt;/span>
             &lt;/span>
-          &lt;/span>
-        &lt;/div>
-        &lt;div className="main">
-          &lt;People
-            keyword={this.state.keyword}
-            user={this.state.user}
-            users={this.state.users}
-            enterRoom={this.enterRoom}
-            handleChangeSearch={this.handleChangeSearch}
-            checkChatRoomExists={this.checkChatRoomExists}
-          />
-          &lt;div className="chat-wrapper">
-            &lt;div className="chat-person">
-              &lt;h3 className="truncate" data-testid="room-name">
-                {this.state.roomName}
-              &lt;/h3>
-            &lt;/div>
-            &lt;div className="chat-messages">
-              {roomIsEmpty ? (
-                &lt;div className="empty-chatroom">
-                  &lt;h2> Don't be a couch potato... &lt;/h2>
-                  &lt;h2> Click on a user to start a tateriffic talk! &lt;/h2>
-                &lt;/div>
-              ) : (
-                this.state.messages.map((msg, i) => (
-                  &lt;ChatMessage
-                    key={i}
-                    message={msg}
-                    username={this.state.user.username}
-                  />
-                ))
-              )}
-              &lt;span ref={this.dummy}>&lt;/span>
-            &lt;/div>
-            &lt;ChatInput
-              disable={roomIsEmpty}
-              message={this.state.message}
-              handleChange={this.handleChangeInput}
-              handleSubmit={this.handleSubmit}
+          &lt;/div>
+          &lt;div className="main">
+            &lt;People
+              keyword={this.state.keyword}
+              user={this.state.user}
+              users={this.state.users}
+              enterRoom={this.enterRoom}
+              handleChangeSearch={this.handleChangeSearch}
+              checkChatRoomExists={this.checkChatRoomExists}
             />
+            &lt;div className="chat-wrapper">
+              &lt;div className="chat-person">
+                &lt;h3 className="truncate" data-testid="room-name">
+                  {this.state.roomName}
+                &lt;/h3>
+              &lt;/div>
+              &lt;div className="chat-messages">
+                {roomIsEmpty ? (
+                  &lt;div className="empty-chatroom">
+                    &lt;h2> Don't be a couch potato... &lt;/h2>
+                    &lt;h2> Click on a user to start a tateriffic talk! &lt;/h2>
+                  &lt;/div>
+                ) : (
+                    this.state.messages.map((msg, i) => (
+                      &lt;ChatMessage
+                        key={i}
+                        message={msg}
+                        username={this.state.user.username}
+                      />
+                    ))
+                  )}
+                &lt;span ref={this.dummy}>&lt;/span>
+              &lt;/div>
+              &lt;ChatInput
+                disable={roomIsEmpty}
+                message={this.state.message}
+                handleChange={this.handleChangeInput}
+                handleSubmit={this.handleSubmit}
+              />
+            &lt;/div>
           &lt;/div>
         &lt;/div>
-      &lt;/div>
-    );
+      );
   }
 }
 
